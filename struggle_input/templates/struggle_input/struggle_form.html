@@ -1,0 +1,109 @@
+{% load staticfiles %}
+<html>
+<head>
+    <title>Struggle here</title>
+    <link rel="stylesheet" href="{% static 'css/struggle.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+</head>
+<body>
+<div class="width">
+    <h1>Enter your struggle here</h1>
+
+    {% if form.errors %}
+        <p class="errors">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+    {% endif %}
+
+     <form action="" method="post">
+        <ul class="field">
+          <li>
+            {{ form.date.errors }}
+                <label for="id_date">Date:</label>
+            {{ form.date }}
+          </li>
+          <li>
+            {{ form.title.errors }}
+                <label for="id_title">Title:</label>
+            {{ form.title }}    
+          </li>
+        </ul>
+        <ul class="field">
+          <li>
+             {{ form.struggle.errors }}
+                <label for="id_struggle">Struggle:</label>
+             {{ form.struggle }}
+          </li>    
+          <li>
+             {{ form.plan.errors }}
+                <label for="id_plan">Plan:</label>
+             {{ form.plan }}
+          </li>
+        </ul>
+        <ul class="field">
+          <li>
+            {{ form.frustration_level.errors }}
+                <label for="id_frustration_level">Frustration levels:</label>
+            {{ form.frustration_level }}
+          </li> 
+           <li>
+            {{ form.time_off_task.errors }}
+                <label for="id_time_off_task">Time off task:</label>
+            {{ form.time_off_task }}
+          </li>
+        </ul>
+        <ul class="field">
+          <li>
+            {{ form.code_screen_shot.errors }}
+                <label for="id_code_screen_shot">Upload your code here:</label>
+            {{ form.code_screen_shot }}
+          </li>
+          <li>
+             {% csrf_token %}
+            <input type="submit" value="Submit">
+          </li>
+        </ul>
+    </form>
+</div>
+
+   <!--  <form action="" method="post"> -->
+        <!-- <div class="field"> -->
+           <!--  {{ form.date.errors }}
+            <label for="id_date">Date:</label>
+            {{ form.date }} -->
+        <!-- </div> -->
+       <!--  <div class="field">
+            {{ form.title.errors }}
+            <label for="id_title">Title:</label>
+            {{ form.title }}
+        </div> -->
+       <!--  <div class="field">
+            {{ form.struggle.errors }}
+            <label for="id_struggle">Struggle:</label>
+            {{ form.struggle }}
+        </div> -->
+       <!--  <div class="field">
+            {{ form.plan.errors }}
+            <label for="id_plan">Plan:</label>
+            {{ form.plan }}
+        </div> -->
+       <!--  <div class="field">
+            {{ form.frustration_level.errors }}
+            <label for="id_frustration_level">Frustration levels:</label>
+            {{ form.frustration_level }}
+        </div> -->
+        <!-- <div class=field>
+            {{ form.time_off_task.errors }}
+            <label for="id_time_off_task">Time off task:</label>
+            {{ form.time_off_task }}
+        </div> -->
+       <!--  <div class=field>
+            {{ form.code_screen_shot.errors }}
+            <label for="id_code_screen_shot">Upload your code here:</label>
+            {{ form.code_screen_shot }}
+        </div> -->
+       <!--  {% csrf_token %}
+        <input type="submit" value="Submit"> -->
+    <!-- </form> -->
+</body>
+</html>
