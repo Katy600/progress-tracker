@@ -1,5 +1,7 @@
 from django.db import models
 from datetime import date
+from django.forms.widgets import NumberInput
+from django.core.validators import *
 
 # Create your models here.
 
@@ -9,7 +11,8 @@ class StruggleData(models.Model):
 	struggle = models.TextField(help_text="enter your struggles here")
 	plan = models.TextField(help_text="enter your plan of action here", verbose_name ='plan of action')
 	frustration_level = models.IntegerField()
-	time_off_task = models.IntegerField()
+	time_off_task = models.IntegerField(default=5, help_text='value 1 to 10', validators=[MaxValueValidator(10),
+            MinValueValidator(1)])
 	code_screen_shot = models.ImageField(blank=True, verbose_name ='add a screen shot of your code')
 
 

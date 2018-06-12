@@ -2,13 +2,9 @@ from django.shortcuts import render
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from struggle_input import views
 from .models import StruggleData
-from .forms import StruggleForm
+from .forms import StruggleModelForm
 import datetime
 from django.urls import reverse
-
-
-def hello(request):
-    return HttpResponse("Hello world")
 
 
 def search(request):
@@ -27,7 +23,7 @@ def search(request):
 
 def add_struggle(request):
     if request.method == 'POST':
-        form = StruggleForm(request.POST)
+        form = StruggleModelForm(request.POST)
         if form.is_valid():
             date = form.cleaned_data['date']
             title = form.cleaned_data['title']
@@ -48,7 +44,7 @@ def add_struggle(request):
                                          		)
             return HttpResponseRedirect('/struggles')
     else:
-        form = StruggleForm()
+        form = StruggleModelForm()
 
     return render(request, 'struggle_input/struggle_form.html', {'form': form})
 

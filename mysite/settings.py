@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'struggle_input',
+    'jquery',
 ]
 
 MIDDLEWARE = [
