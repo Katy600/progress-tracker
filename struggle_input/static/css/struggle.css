@@ -13,6 +13,29 @@ h1 {
     font-size: 50px;
 }
 
+td {
+    width: 1000px;
+}
+
+.search {
+    margin: 0px;
+    padding-left: 30%;
+    height: 60px;
+    padding-bottom: 20px;
+}
+
+.display {
+    margin: 20px;
+    padding-top: 50px;
+    padding-left: 30%;
+    height: 60px;
+    padding-bottom: 200px;
+}
+
+.display-heading {
+     text-align: left;
+}
+
 input, textarea {
     display: block;
     width: 300px;
@@ -61,7 +84,7 @@ label {
 }
 
 .width {
-    width: 50%;
+    width: 100%;
 }
 
 .slidecontainer {
