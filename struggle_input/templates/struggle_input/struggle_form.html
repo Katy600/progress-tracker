@@ -103,7 +103,7 @@
               <p>Found {{ struggles|length }} struggle{{ struggles|pluralize }}</p>
               <ul>               
                 {% for struggle in struggles %}               
-                  <li>{{ struggle.title }}</li>               
+                   <a href="{% url 'struggle-detail' pk=struggle.pk %}"><li>{{ struggle.title }}</li></a>           
                 {% endfor %}           
               </ul>       
             {% else %}           
