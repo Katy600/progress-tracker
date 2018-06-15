@@ -6,36 +6,14 @@
     <link rel="stylesheet" href="{% static 'css/struggle.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 
-  <!-- <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Slider - Range with fixed maximum</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#slider-range-max" ).slider({
-      range: "max",
-      min: 1,
-      max: 10,
-      value: 1,
-      slide: function( event, ui ) {
-        $( "#amount" ).val( ui.value );
-      }
-    });
-    $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
-  } );
-  </script> -->
+    <script>
+        $(document).bind('slider_change', function(event, value) {
+            alert('New vote: ' + value);
+        });
+
+    </script>
 </head>
 <body>
- 
-<!-- <p>
-  <label for="amount">Minimum number of bedrooms:</label>
-  <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-</p>
-<div id="slider-range-max"></div> -->
-</body>
     <div class="width">
         <h1>Enter your struggle here</h1>
 
@@ -44,8 +22,8 @@
                 Please correct the error{{ form.errors|pluralize }} below.
             </p>
         {% endif %}
-
-         <form action="" method="post">
+      
+        <form action="" method="post" enctype="multipart/form-data">
             <ul class="field">
               <li>
                 {{ form.date.errors }}
@@ -74,15 +52,14 @@
               <div class="slidecontainer">
                   <li>
                     {{ form.frustration_level.errors }}
-                        <label for="id_frustration_level">Frustration levels:</label>
+                       <label for="id_frustration_level">Frustration levels (0 to 10):</label>    
                     {{ form.frustration_level }}
-                    <p>{{ field.auto_id }}<p>
                   </li> 
               </div>
               <div class="slidecontainer">
                    <li>
                     {{ form.time_off_task.errors }}
-                        <label for="id_time_off_task">Time off task:</label>
+                        <label for="id_time_off_task">Time off task (0 to 10):</label>
                     {{ form.time_off_task }}
                   </li>
             </div>

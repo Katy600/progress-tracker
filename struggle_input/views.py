@@ -5,6 +5,7 @@ from .models import StruggleData
 from .forms import StruggleModelForm
 import datetime
 from django.urls import reverse
+from django.template import RequestContext
 
 
 def search(request):
@@ -23,7 +24,8 @@ def search(request):
 
 def add_struggle(request):
     if request.method == 'POST':
-        form = StruggleModelForm(request.POST)
+        form = StruggleModelForm(request.POST, request.FILES)
+        print(form)
         if form.is_valid():
             date = form.cleaned_data['date']
             title = form.cleaned_data['title']
@@ -32,7 +34,7 @@ def add_struggle(request):
             frustration_level = form.cleaned_data['frustration_level']
             time_off_task = form.cleaned_data['time_off_task']
             code_screen_shot = form.cleaned_data['code_screen_shot']
-
+      
             struggle_data = StruggleData.objects.create(
             									 title=title,
             									 date=date,
@@ -40,7 +42,7 @@ def add_struggle(request):
             									 plan=plan, 
             									 frustration_level=frustration_level,
             									 time_off_task=time_off_task,
-            									 code_screen_shot=code_screen_shot,
+            									 code_screen_shot= request.FILES['code_screen_shot']
                                          		)
             return HttpResponseRedirect('/struggles')
     else:
