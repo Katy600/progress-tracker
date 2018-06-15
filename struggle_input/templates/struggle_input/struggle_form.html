@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{% static 'css/struggle.css' %}">
 
     <script>
-
     </script>
 </head>
 <body>
@@ -82,7 +81,6 @@
          </div>
        </td>
       <td>
-        
         <div class="search">
           {% if errors %}
             <ul>
@@ -90,8 +88,7 @@
                 <li>{{ error }}</li>
               {% endfor %}
             </ul>
-          {% endif %}
-          
+          {% endif %} 
           <form  action="{% url 'struggles_search' %}" method="get">
             <input class="search-button" type="text" name="q">
             <input id="search" class="search-button" type="submit" value="Search">
@@ -116,106 +113,6 @@
         {% endif %}
       </td>
     </tr>
-    <!-- <tr class="search-and-display">
-      <td></td>
-      <td class="search-and-display">
-        <p>You searched for: <strong>{{ query }}</strong></p>
-   
-        {% if struggles %}           
-          <p>Found {{ struggles|length }} struggle{{ struggles|pluralize }}</p>
-          <ul>               
-            {% for struggle in struggles %}               
-              <li>{{ struggle.title }}</li>               
-            {% endfor %}           
-          </ul>       
-        {% else %}           
-          <p>No struggles matched your search criteria.</p>       
-        {% endif %}     
-      </td>
-    </tr> -->
   </table>
-    <!-- <table>
-        <tr>
-            <td>
-                <div class="width">
-                <h1>Enter your struggle here</h1>
-
-                {% if form.errors %}
-                    <p class="errors">
-                        Please correct the error{{ form.errors|pluralize }} below.
-                    </p>
-                {% endif %}
-          
-                <form action="" method="post" enctype="multipart/form-data">
-                    <ul class="field">
-                      <li>
-                        {{ form.date.errors }}
-                            <label for="id_date">Date:</label>
-                        {{ form.date }}
-                      </li>
-                      <li>
-                        {{ form.title.errors }}
-                            <label for="id_title">Title:</label>
-                        {{ form.title }}    
-                      </li>
-                    </ul>
-                    <ul class="field">
-                      <li>
-                         {{ form.struggle.errors }}
-                            <label for="id_struggle">Struggle:</label>
-                         {{ form.struggle }}
-                      </li>    
-                      <li>
-                         {{ form.plan.errors }}
-                            <label for="id_plan">Plan:</label>
-                         {{ form.plan }}
-                      </li>
-                    </ul>
-                    <ul class="field">
-                      <div class="slidecontainer">
-                          <li>
-                            {{ form.frustration_level.errors }}
-                               <label for="id_frustration_level">Frustration levels (0 to 10):</label>    
-                            {{ form.frustration_level }}
-                          </li> 
-                      </div>
-                      <div class="slidecontainer">
-                           <li>
-                            {{ form.time_off_task.errors }}
-                                <label for="id_time_off_task">Time off task (0 to 10):</label>
-                            {{ form.time_off_task }}
-                          </li>
-                    </div>
-                    </ul>
-                    <ul class="field">
-                      <li>
-                        {{ form.code_screen_shot.errors }}
-                            <label for="id_code_screen_shot">Upload your code here:</label>
-                        {{ form.code_screen_shot }}
-                      </li>
-                      <li>
-                         {% csrf_token %}
-                        <input type="submit" value="Submit">
-                      </li>
-                    </ul>
-                </form>
-            </div>
-        </td>
-        <td>
-            <h1>Search for your struggle here</h1>
-            {% if errors %}
-                <ul>
-                    {% for error in errors %}
-                    <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-            <form action=" " method="get">
-                <input type="text" name="q">
-                <input type="submit" value="Search">
-            </form>
-        </td>
-    </tr>
-</table> -->
 </body>
 </html>
