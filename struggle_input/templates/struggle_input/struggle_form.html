@@ -26,7 +26,7 @@
             </p>
           {% endif %}
     
-          <form action="" method="post" enctype="multipart/form-data">
+          <form action="{% url 'struggles_input' %}" method="post" enctype="multipart/form-data">
             <ul class="field">
               <li>
                 {{ form.date.errors }}
@@ -75,13 +75,14 @@
               </li>
               <li>
                  {% csrf_token %}
-                <input type="submit" value="Submit">
+                <input id="submit" type="submit" value="Submit">
               </li>
             </ul>
           </form>
          </div>
        </td>
       <td>
+        
         <div class="search">
           {% if errors %}
             <ul>
@@ -90,26 +91,29 @@
               {% endfor %}
             </ul>
           {% endif %}
-          <form action=" " method="get">
-            <input type="text" name="q">
-            <input type="submit" value="Search">
+          
+          <form  action="{% url 'struggles_search' %}" method="get">
+            <input class="search-button" type="text" name="q">
+            <input id="search" class="search-button" type="submit" value="Search">
           </form>
         </div>
-        <div class="display">
-          <h1 class="display-heading">View struggle</h1>
-          <p>You searched for: <strong>{{ query }}</strong></p>
-   
-          {% if struggles %}           
-            <p>Found {{ struggles|length }} struggle{{ struggles|pluralize }}</p>
-            <ul>               
-              {% for struggle in struggles %}               
-                <li>{{ struggle.title }}</li>               
-              {% endfor %}           
-            </ul>       
-          {% else %}           
-            <p>No struggles matched your search criteria.</p>       
-          {% endif %}    
-        </div>
+        {% if searching %}
+          <div class="display">
+            <h1 class="display-heading">View struggle</h1>
+            <p>You searched for: <strong>{{ query }}</strong></p>
+     
+            {% if struggles %}           
+              <p>Found {{ struggles|length }} struggle{{ struggles|pluralize }}</p>
+              <ul>               
+                {% for struggle in struggles %}               
+                  <li>{{ struggle.title }}</li>               
+                {% endfor %}           
+              </ul>       
+            {% else %}           
+              <p>No struggles matched your search criteria.</p>       
+            {% endif %}    
+          </div>
+        {% endif %}
       </td>
     </tr>
     <!-- <tr class="search-and-display">

@@ -17,6 +17,25 @@ td {
     width: 1000px;
 }
 
+.search-button {
+    background-color: #b1fdff;
+}
+
+input[id=search]{
+    background-color: #2f99fb;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 300px;
+}
+
+input[id=search]:hover {
+    background-color: #0578e3;
+}
+
 .search {
     margin: 0px;
     padding-left: 30%;
@@ -50,8 +69,8 @@ textarea {
     height: 120px;
 }
 
-input[type=submit]{
-    background-color: #4CAF50;
+input[id=submit]{
+    background-color: #fd4d94;
     border: none;
     color: white;
     padding: 16px 32px;
@@ -61,8 +80,8 @@ input[type=submit]{
     width: 300px;
 }
 
-input[type=submit]:hover {
-    background-color: #45a049;
+input[id=submit]:hover {
+    background-color: #f9008a;
 }
 
 .field {
