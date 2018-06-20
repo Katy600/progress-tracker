@@ -1,34 +1,35 @@
 {% load staticfiles %}
 
-
-
-
-{% load staticfiles %}
 <html lang="en">
 <head>
     <title>Struggle here</title>
     <script type="text/javascript" src="{{ STATIC_URL }} /static/javascript/struggle.js"></script>
-    <link rel="stylesheet" href="{% static 'css/struggle.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/struggle.css' %}">
-
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+    
     <script>
     </script>
 </head>
 <body>
-	<h1>Struggle detail</h1>
-	<ul class="field">
-		<li>{{ object.title }}</li>
-		<li>{{ object.date }}</li>
-	</ul>
-	<ul class="field">
-		<li>Struggle: {{ object.struggle }}</li>
-		<li>Plan: {{ object.plan }}</li>
-	</ul>
-	<ul class="field">
-		<li>Frustration Level: {{ object.frustration_level }}</li>
-		<li>Struggle: {{ object.time_off_task }}</li>
-	</ul>
+	<h1 class="main-headings">Struggle detail</h1>
+	<div class="struggle-details-page">
+		<table>
+			<tr>
+				<td><h2>Date: </h2><p>{{ object.date }}</p></td>
+				<td><h2>Title: </h2><p>{{ object.title }}</p></td>
+			</tr>
+			<tr>
+				<td><h2>Struggle: </h2><p>{{ object.struggle }}</p></td>
+				<td><h2>Plan: </h2><p>{{ object.plan }}</p>
+				</td>
+			</tr>
+			<tr>
+				<td><h2>Frustration Level: </h2><p>{{ object.frustration_level }}</p></td>
+				<td><h2>Time off task: </h2><p>{{ object.time_off_task }}</p></td>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>
 
