@@ -52,11 +52,11 @@ input[id=search]{
   cursor: pointer;
   width: 300px;
   font-size: 20px;
-  background-color: #805D0A;
+  background-color: #9C8B91;
 }
 
 input[id=search]:hover {
-  background-color: #A15C17;
+  background-color: #8A7C81;
 }
 
 input, textarea {
@@ -97,7 +97,7 @@ input[id=submit]:hover {
 }
 
 .right {
-  background-color: #E0B143;
+  background-color: #905794;
   float: right;
   width: 20%;
   padding: 20px;
@@ -134,7 +134,7 @@ input[id=submit]:hover {
 }
 
 .struggle-details-page {
-  background-color: #E0B143;
+  background-color: #905794;
   margin: 50px;
 }
 
