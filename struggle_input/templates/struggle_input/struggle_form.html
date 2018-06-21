@@ -12,61 +12,63 @@
 </head>
 <body>
   <div class="left">
-    <table class="enter-struggle-table">
-      <tr>
-        <td colspan="2" class="main-headings"><h1>Enter struggle</h1></td>
-      </tr>
-        {% if form.errors %}
-          <p class="errors">Please correct the error{{ form.errors|pluralize }} below.</p>
-        {% endif %}
-      <tr>
-        <td>
-          {{ form.date.errors }}<br>
-            <label for="id_date">Date:</label><br>
-          {{ form.date }}
-        </td>
-        <td>
-          {{ form.title.errors }}<br>
-            <label for="id_title">Title:</label><br>
-          {{ form.title }}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          {{ form.struggle.errors }}<br>
-            <label for="id_struggle">Struggle:</label><br>
-          {{ form.struggle }}
-        </td>
-        <td>
-          {{ form.plan.errors }}<br>
-            <label for="id_plan">Plan:</label><br>
-          {{ form.plan }}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          {{ form.frustration_level.errors }}<br>
-            <label for="id_frustration_level">Frustration levels (0 to 10):</label><br>   
-          {{ form.frustration_level }}
-        </td>
-        <td>
-          {{ form.time_off_task.errors }}<br>
-            <label for="id_time_off_task">Time off task (0 to 10):</label><br>
-          {{ form.time_off_task }}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          {{ form.code_screen_shot.errors }}<br>
-            <label for="id_code_screen_shot">Upload your code here:</label><br>
-          {{ form.code_screen_shot }}
-        </td>
-        <td>
-          {% csrf_token %}
-          <input id="submit" type="submit" value="Submit">
-        </td>
-      </tr>  
-    </table>
+    <form action="{% url 'struggles_input' %}" method="post" enctype="multipart/form-data">
+      <table class="enter-struggle-table">
+        <tr>
+          <td colspan="2" class="main-headings"><h1>Enter struggle</h1></td>
+        </tr>
+          {% if form.errors %}
+            <p class="errors">Please correct the error{{ form.errors|pluralize }} below.</p>
+          {% endif %}
+        <tr>
+          <td>
+            {{ form.date.errors }}<br>
+              <label for="id_date">Date:</label><br>
+            {{ form.date }}
+          </td>
+          <td>
+            {{ form.title.errors }}<br>
+              <label for="id_title">Title:</label><br>
+            {{ form.title }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{ form.struggle.errors }}<br>
+              <label for="id_struggle">Struggle:</label><br>
+            {{ form.struggle }}
+          </td>
+          <td>
+            {{ form.plan.errors }}<br>
+              <label for="id_plan">Plan:</label><br>
+            {{ form.plan }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{ form.frustration_level.errors }}<br>
+              <label for="id_frustration_level">Frustration levels (0 to 10):</label><br>   
+            {{ form.frustration_level }}
+          </td>
+          <td>
+            {{ form.time_off_task.errors }}<br>
+              <label for="id_time_off_task">Time off task (0 to 10):</label><br>
+            {{ form.time_off_task }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{ form.code_screen_shot.errors }}<br>
+              <label for="id_code_screen_shot">Upload your code here:</label><br>
+            {{ form.code_screen_shot }}
+          </td>
+          <td>
+            {% csrf_token %}
+            <input id="submit" type="submit" value="Submit">
+          </td>
+        </tr>  
+      </table>
+    </form>
   </div>
 
   <div class="right">
