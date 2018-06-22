@@ -5,7 +5,7 @@ from .models import StruggleData
 # admin.site.register(StruggleData)
 
 class StruggleDataAdmin(admin.ModelAdmin):
-    list_display = ('date', 'title', 'struggle', 'plan', 'frustration_level', 'time_off_task', 'code_screen_shot')
-    fields = [('title', 'date'), 'struggle', 'plan', ('frustration_level', 'time_off_task', 'code_screen_shot')]
+    list_display = ('time_started', 'title', 'struggle', 'plan', 'frustration_level', 'learning_level', 'code_screen_shot', 'review_learning', 'time_ended', 'struggle_in_progess', 'helpful_link')
+    fields = [('title', 'time_started'), 'struggle', 'plan', ('frustration_level', 'learning_level', 'code_screen_shot'), 'review_learning', ('time_ended', 'helpful_link' ), 'struggle_in_progess']
 
 admin.site.register(StruggleData, StruggleDataAdmin)

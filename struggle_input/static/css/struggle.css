@@ -2,6 +2,8 @@
 body {
   background-color: #9C8B91;
   font-family: 'Nanum Gothic', sans-serif;
+  margin: 0px;
+  padding: 0px;
 }
 
 p {
@@ -90,6 +92,14 @@ input[id=submit]:hover {
   background-color: #785794;
 }
 
+input[id=id_frustration_level] {
+  width: 550px;
+  height: 20px;
+}
+
+.frustration-level {
+  padding-right: 20px;
+}
 
 .main-headings {
   text-align: center;
@@ -124,8 +134,8 @@ input[id=submit]:hover {
 }
 
 .enter-struggle-table td {
-  padding: 10px;
-  padding-left: 30px;
+  padding: 3px;
+  padding-left: 10px;
 }
 
 .struggle-details-page p {
@@ -146,7 +156,10 @@ input[id=submit]:hover {
   padding: 20px;
 }
 
-
+.errors {
+  color: red;
+  list-style-type: none;
+}
 
 
 

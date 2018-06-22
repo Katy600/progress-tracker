@@ -17,14 +17,18 @@
         <tr>
           <td colspan="2" class="main-headings"><h1>Enter struggle</h1></td>
         </tr>
-          {% if form.errors %}
-            <p class="errors">Please correct the error{{ form.errors|pluralize }} below.</p>
-          {% endif %}
+        <tr>
+          <td colspan="2">
+            {% if form.errors %}
+              <p class="errors">Please correct the error below.{{ form.errors }}.</p>
+            {% endif %}
+          </td>
+        </tr>
         <tr>
           <td>
-            {{ form.date.errors }}<br>
-              <label for="id_date">Date:</label><br>
-            {{ form.date }}
+            {{ form.time_started.errors }}<br>
+              <label for="id_time_started">Date:</label><br>
+            {{ form.time_started }}
           </td>
           <td>
             {{ form.title.errors }}<br>
@@ -45,15 +49,22 @@
           </td>
         </tr>
         <tr>
-          <td>
-            {{ form.frustration_level.errors }}<br>
-              <label for="id_frustration_level">Frustration levels (0 to 10):</label><br>   
-            {{ form.frustration_level }}
-          </td>
-          <td>
-            {{ form.time_off_task.errors }}<br>
-              <label for="id_time_off_task">Time off task (0 to 10):</label><br>
-            {{ form.time_off_task }}
+          <td colspan="2">
+            <table>
+              <tr>
+                <td colspan="3" class="frustration-level">
+                 {{ form.frustration_level.errors }}<br>
+                    <label for="id_frustration_level">Frustration levels (0 to 10):</label>
+                </td>
+              </tr>
+              <tr>
+                <td>🙂</td>
+                <td class="frustration-level">
+                  {{ form.frustration_level }}
+                </td>
+                <td>👹</td>
+              </tr>
+            </table>
           </td>
         </tr>
         <tr>
