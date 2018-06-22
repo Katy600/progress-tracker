@@ -25,15 +25,17 @@
 				</td>
 			</tr>
 			<tr>
+				<td>
+					<h2>Screen shot:</h2>
+				</td>
 				<td><h2>Frustration Level: </h2><p>{{ object.frustration_level }}</p></td>
-				<td><h2>Learning Level: </h2><p>{{ object.learning_level }}</p></td>
 			</tr>
 			<tr>
 				<td>
-					{% if object.code_screen_shot.url == None %}
+					{% if object.code_screen_shot  %}
+						<img src="{{ object.code_screen_shot.url }}" alt="code screen shot" width=700" height="420">
+					{% else %}
 						<p>No screen shot</p>
-					{{ else }}
-							<img src="{{ object.code_screen_shot.url }}" alt="code screen shot" width=700" height="420">
 					{% endif %}
 				</td>
 			</tr>

@@ -7,7 +7,7 @@ from . import views
 
 
 urlpatterns = [
-	path('<pk>/', DetailStruggleView.as_view(), name='struggle-detail'),
+	path('struggles/<int:pk>/', DetailStruggleView.as_view(), name='struggle-detail'),
 	url(r'^struggles/input$', AddStruggle.as_view(), name='struggles_input'),
 	url(r'^struggles/search$', views.search, name='struggles_search'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

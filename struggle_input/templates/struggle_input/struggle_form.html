@@ -75,9 +75,10 @@
           </td>
           <td>
             {% csrf_token %}
+            {{ form.struggle_in_progess.as_hidden }}
             <input id="submit" type="submit" value="Submit">
           </td>
-        </tr>  
+        </tr>
       </table>
     </form>
   </div>
@@ -107,6 +108,17 @@
       {% else %}           
         <br><p>No struggles matched your search criteria.</p>       
     {% endif %}
+
+    <h1>Struggles in progress</h1>
+        {% for struggle in struggles_in_progress %}               
+          <a class="space" href="">
+            {# {% url 'struggle-complete' pk=struggle.pk %} #}
+            <p class="space" ><li>{{ struggle.title }}</li></p>
+          </a>
+        {% empty %}           
+          <br><p>No struggles in progress.</p>  
+        {% endfor %}     
   </div>
+
 </body>
 </html>

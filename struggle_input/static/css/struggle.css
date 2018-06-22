@@ -114,9 +114,14 @@ input[id=id_frustration_level] {
   padding-left: 50px;
   margin-top: 90px;
   margin-bottom: 90px;
-  height: 80%;
+  height: 85%;
   margin-right: 180px;
 }
+
+/*.right h1 {
+  color: white;
+  font-size: 30px;
+}*/
 
 .left {
   float: left;
