@@ -46,6 +46,18 @@ label {
   font-weight: bold;
 }
 
+textarea[name=review_learning]{
+  width: 600px;
+  background-color: #905794;
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  margin-top: 50px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
 input[id=search]{
   border: none;
   color: white;
@@ -64,6 +76,17 @@ input[id=search]:hover {
 input, textarea {
   display: block;
   width: 300px;
+  padding: 12px 20px;
+  margin: 8px 0px;
+  border: 2px solid grey;
+  background-color: #CDE1EB;
+  font-size: 15px;
+  font-color: grey;
+}
+
+textarea[id=id_review_learning]{
+  width: 30%;
+  display: block;
   padding: 12px 20px;
   margin: 8px 0px;
   border: 2px solid grey;
@@ -97,8 +120,25 @@ input[id=id_frustration_level] {
   height: 20px;
 }
 
+input[id=id_learning_level] {
+  width: 550px;
+  height: 20px;
+}
+
+.struggle-detail-review td {
+  width:800px;
+}
+
 .frustration-level {
   padding-right: 20px;
+}
+
+.learning-level {
+  padding-right: 20px;
+}
+
+.review-learning {
+  width: 600px; 
 }
 
 .main-headings {
@@ -117,11 +157,6 @@ input[id=id_frustration_level] {
   height: 85%;
   margin-right: 180px;
 }
-
-/*.right h1 {
-  color: white;
-  font-size: 30px;
-}*/
 
 .left {
   float: left;
@@ -155,19 +190,37 @@ input[id=id_frustration_level] {
 
 .struggle-details-page td {
   padding: 10px;
+  width: 50%;
 }
 
 .struggle-details-page {
   padding: 20px;
 }
 
+.struggle-details-page table, tr, td, h2 {
+  font-size: 35px;
+  color: #ffe5f2;
+}
+
+.struggle-details-heading {
+  font-size: 50px;
+  text-align: center;
+  width: 100%;
+  padding-left: 30%;
+  color: white;
+}
+
+.no-screen-shot {
+  padding-left: 30%;
+  padding-right: 30%;
+  color: black;
+}
+
+.learning-level {
+  padding-left: 20px;
+}
+
 .errors {
   color: red;
   list-style-type: none;
 }
-
-
-
-
-
-

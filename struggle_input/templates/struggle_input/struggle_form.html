@@ -111,8 +111,8 @@
 
     <h1>Struggles in progress</h1>
         {% for struggle in struggles_in_progress %}               
-          <a class="space" href="">
-            {# {% url 'struggle-complete' pk=struggle.pk %} #}
+          <a class="space" href="{% url 'struggle-complete' pk=struggle.id %}">
+            <!-- {% url 'struggle-complete' pk=struggle.pk %} -->
             <p class="space" ><li>{{ struggle.title }}</li></p>
           </a>
         {% empty %}           

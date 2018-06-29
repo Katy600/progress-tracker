@@ -16,12 +16,13 @@ class StruggleData(models.Model):
 	frustration_level = models.IntegerField(verbose_name="frustration level (Rate 0 to 10)")
 	learning_level = models.IntegerField(verbose_name="learning level (Rate 0 to 10)", blank=True, null=True)
 	code_screen_shot = models.FileField(blank=True, null=True)
+	code_screen_shot_update = models.FileField(blank=True, null=True)
 	review_learning = models.TextField(blank=True, null=True)
 	struggle_in_progess = models.BooleanField(default=True)
 	helpful_link = models.URLField(blank=True, null=True)
-
+	
 	def __str__(self):
-		return 'Title: %s, Date: %s, Struggle: %s, Plan: %s, Frustration Level: %s, Learning Level: %s, Review Learning: %s, Time spent on struggle: %s, Struggle in progress: %s, Helpful link: %s ' % (self.title, self.time_started, self.struggle, self.plan, self.frustration_level, self.learning_level, self.review_learning, self.time_ended, self.struggle_in_progess, self.helpful_link )
+		return 'Title: %s, Date: %s, Struggle: %s, Plan: %s, Frustration Level: %s, Learning Level: %s, Review Learning: %s, Time spent on struggle: %s, Struggle in progress: %s, Helpful link: %s' % (self.title, self.time_started, self.struggle, self.plan, self.frustration_level, self.learning_level, self.review_learning, self.time_ended, self.struggle_in_progess, self.helpful_link)
 
 	class Meta:
 		ordering = ["-time_started", "title"]
