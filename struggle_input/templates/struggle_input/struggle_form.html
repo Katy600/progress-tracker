@@ -110,13 +110,15 @@
     {% endif %}
 
     <h1>Struggles in progress</h1>
-        {% for struggle in struggles_in_progress %}               
-          <a class="space" href="{% url 'struggle-complete' pk=struggle.id %}">
-            <!-- {% url 'struggle-complete' pk=struggle.pk %} -->
-            <p class="space" ><li>{{ struggle.title }}</li></p>
-          </a>
+        {% for struggle in struggles_in_progress %}
+          {% if struggle.struggle_in_progess == False  %}               
+            <a class="space" href="{% url 'struggle-complete' pk=struggle.id %}">
+              <p class="space" ><li>{{ struggle.title }}</li></p>
+            </a>
+          {% endif%}
         {% empty %}           
-          <br><p>No struggles in progress.</p>  
+            <br><p>No struggles in progress.</p>  
+          
         {% endfor %}     
   </div>
 
