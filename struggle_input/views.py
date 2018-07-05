@@ -41,13 +41,12 @@ class AddStruggle(FormView):
   success_url = reverse_lazy('struggles_input')
 
   def form_valid(self, form):
-    # form = StruggleModelForm(request.POST, instance=a)
     form.save()
     return super().form_valid(form)
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-    struggles_in_progress = StruggleData.objects.filter(struggle_in_progess=True)
+    struggles_in_progress = StruggleData.objects.filter(struggle_in_progess=False)
     context['struggles_in_progress'] = struggles_in_progress
     return context
 
@@ -67,69 +66,8 @@ class DetailStruggleView(DetailView):
 
 class CompleteStruggleFormView(UpdateView):
   model = StruggleData
-  fields = ['title','time_started', 'time_ended', 'struggle', 'plan', 'frustration_level','code_screen_shot',  'learning_level', 'review_learning', 'struggle_in_progess', 'helpful_link', 'code_screen_shot_update']
   template_name = 'struggle_input/struggle-complete.html'
-  # template_name_suffix = '_update_form'
-  # success_url = reverse_lazy('struggle-complete')
+  form_class = StruggleModelForm
 
   def get_success_url(self):
-    return reverse_lazy('struggle-complete', kwargs={'pk': self.get_object().id})
-
-
-  # def get_object(self, queryset=None):
-  #   # get the existing object or created a new one
-  #   obj, created = StruggleData.objects.get_or_create(col_1=self.kwargs['value_1'], col_2=self.kwargs['value_2'])
-  #   print('obj', obj)
-  #   print('created', created)
-  #   return obj
-
-
-# def my_view(request, pk): 
-#   instance = StruggleData.objects.get(id=pk)
-#   form = StruggleModelForm(request.POST or None, instance=instance)
-#   if form.is_valid():
-#     form.save()
-#     return redirect('next_view')
-#   return direct_to_template(request, 'struggle-detail.html', {'form': form})  
-
-    # form_class = StruggleModelForm
-    # template_name = 'struggle_input/struggle-detail.html'
-    # success_url = reverse_lazy('struggles_input')
-
-    # def form_valid(self, form):
-    #     form = StruggleModelForm(request.POST, instance=struggles)
-    #     form.save()
-    #     # print("CompleteStruggleFormView", form)
-    #     return super().form_valid(form)
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     struggles_in_progress = StruggleData.objects.filter(struggle_in_progess=True)
-    #     context['struggles_in_progress'] = struggles_in_progress
-    #     print("Context Complete", context)
-    #     return context
-
-
-
-
-
-
-# class CompleteStruggleFormView(UpdateView):
-#     model = StruggleData
-#     fields = ['time_ended', 'learning_level', 'review_learning', 'struggle_in_progess', 'helpful_link' ]
-#     template_name_suffix = '_update_form'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return reverse_lazy('struggles_input')

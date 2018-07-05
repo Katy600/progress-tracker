@@ -18,7 +18,7 @@ class StruggleData(models.Model):
 	code_screen_shot = models.FileField(blank=True, null=True)
 	code_screen_shot_update = models.FileField(blank=True, null=True)
 	review_learning = models.TextField(blank=True, null=True)
-	struggle_in_progess = models.BooleanField(default=True)
+	struggle_in_progess = models.BooleanField(default=False)
 	helpful_link = models.URLField(blank=True, null=True)
 	
 	def __str__(self):

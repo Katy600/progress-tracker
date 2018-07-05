@@ -85,8 +85,8 @@ input, textarea {
 }
 
 textarea[id=id_review_learning]{
-  width: 30%;
-  display: block;
+  /*width: 30%;*/
+  display: inline-block;
   padding: 12px 20px;
   margin: 8px 0px;
   border: 2px solid grey;
@@ -109,6 +109,7 @@ input[id=submit]{
   margin-top: 50px;
   cursor: pointer;
   font-size: 20px;
+  display: inline-block;
 }
 
 input[id=submit]:hover {
@@ -123,6 +124,12 @@ input[id=id_frustration_level] {
 input[id=id_learning_level] {
   width: 550px;
   height: 20px;
+}
+
+
+input[type=checkbox] {
+  zoom: 5.5;
+  width: 20px;
 }
 
 .struggle-detail-review td {
@@ -200,6 +207,16 @@ input[id=id_learning_level] {
 .struggle-details-page table, tr, td, h2 {
   font-size: 35px;
   color: #ffe5f2;
+}
+
+.struggle-review-details table {
+  padding-left: 50px;
+}
+
+.struggle-review-details {
+  /*margin: 20px;*/
+  padding-left: 10px;
+  /*float: left;*/
 }
 
 .struggle-details-heading {

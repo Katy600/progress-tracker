@@ -22,7 +22,11 @@
 				<td><h2>Time ended: </h2><p>{{ object.time_ended }}</p></td>
 			</tr>
 			<tr>
-				<td colspan="2"><h2>Struggle: </h2><p>{{ object.struggle }}</p></td>
+				<td><h2>Struggle: </h2><p>{{ object.struggle }}</p></td>
+				<td>
+					<h2>Frustration Level: </h2><p>{{ object.frustration_level }}</p>
+					<h2 class="learning-level">Learning Level:</h2><p>{{ object.learning_level }}</p>
+				</td>
 			</tr>
 			<tr>
 				<td><h2>Plan: </h2><p>{{ object.plan }}</p></td>
@@ -33,8 +37,7 @@
 					<h2>Screen shot:</h2>
 				</td>
 				<td>
-					<h2>Frustration Level: </h2><p>{{ object.frustration_level }}</p>
-					<h2 class="learning-level">Learning Level:</h2><p>{{ object.learning_level }}</p>
+					<h2>Updated screen shot:</h2>
 				</td>
 			</tr>
 			<tr>
@@ -42,7 +45,7 @@
 					{% if object.code_screen_shot %}
 						<img src="{{ object.code_screen_shot.url }}" alt="code screen shot" width=700" height="420">
 					{% else %}
-						<p>No screen shot</p>
+						<p class="no-screen-shot">No screen shot</p>
 					{% endif %}
 				</td>
 				<td>

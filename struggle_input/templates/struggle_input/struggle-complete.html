@@ -41,166 +41,77 @@
 			</tr>
 		</table>
 	</div>
-
-<form action="{% url 'struggles_input' %}" method="post" enctype="multipart/form-data">
-	<table>
-		<tr>
-      <td colspan="3" class="main-headings"><h1>Review your struggle</h1></td>
-    </tr>
-  	<tr>
-      <td colspan="3">
-        {% if form.errors %}
-          <p class="errors">Please correct the error below.{{ form.errors }}.</p>
-        {% endif %}
-        </td>
-      </tr>
-		<tr>
-			<td>
-				{{ form.time_started.as_hidden }}
-        {{ form.time_ended.errors }}<br>
-          <label for="id_time_ended">Completed time:</label><br>
-        {{ form.time_ended }}
-			</td>
-			<td>
-				{{ form.plan.as_hidden }}
-        {{ form.code_screen_shot_update.errors }}<br>
-          <label for="id_code_screen_shot_update">Code screen shot:</label><br>
-        {{ form.code_screen_shot_update}}
-			</td>
-			<td>
-          {{ form.code_screen_shot.as_hidden }}
-          {{ form.struggle.as_hidden }}
-          {{ form.helpful_link.errors }}<br>
-            <label for="id_helpful_link">Helpful link:</label><br>
-          {{ form.helpful_link }}
-			</td>
-		</tr>
-		<tr>
-			<table>
-	        <tr>
-	          <td colspan="3" class="learning-level"> 
-	            {{ form.learning_level.errors }}<br>
-	            <label for="id_learning_level">Learning levels (0 to 10):</label>
-	          </td>
-	        </tr>
-	        <tr>
-	          <td>🙂</td>
-	          <td class="learning-level">
-	            {{ form.frustration_level.as_hidden }}
-	            {{ form.learning_level }}
-	            {{ form.struggle_in_progess }}
-	          </td>
-	          <td>👹</td>
-	        </tr>
-      	</table>
-			
-		</tr>
-		<tr>
-			<td colspan="2">
-				{{ form.title.as_hidden }}
-        {{ form.review_learning.errors }}<br>
-          <label for="id_review_learning">Review learning:</label><br>
-        {{ form.review_learning }}
-			</td>
-			<td>
-				{% csrf_token %}
-        <input id="submit" type="submit" value="Submit">
-			</td>
-		</tr>
-	</table>
-</form>
-<!-- <form action="{% url 'struggles_input' %}" method="post" enctype="multipart/form-data">
-		{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Update"> 
-</form> -->
-
-	<!-- <div class="left"> -->
-    <!-- <form action="{% url 'struggles_input' %}" method="post" enctype="multipart/form-data">
-      <table class="enter-struggle-table">
-        <tr>
-          <td colspan="2" class="main-headings"><h1>Review your struggle</h1></td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            {% if form.errors %}
-              <p class="errors">Please correct the error below.{{ form.errors }}.</p>
-            {% endif %}
-          </td>
-        </tr>
-        <tr>
-        	<td>
-          	{{ form.time_started.as_hidden }}
-
-            {{ form.time_ended.errors }}<br>
-              <label for="id_time_ended">Completed time:</label><br>
-            {{ form.time_ended }}
-          </td>
-          <td>
-            {{ form.plan.as_hidden }}
-            {{ form.code_screen_shot_update.errors }}<br>
-              <label for="id_code_screen_shot_update">Code screen shot:</label><br>
-            {{ form.code_screen_shot_update}}
-          </td>
-        </tr>
-        <tr>
-          <td>
-            {{ form.struggle.as_hidden }}
-            {{ form.helpful_link.errors }}<br>
-              <label for="id_helpful_link">Helpful link:</label><br>
-            {{ form.helpful_link }}
-          </td> -->
-          <!-- <td class="review-learning" colspan="2">
-            {{ form.title.as_hidden }}
-            {{ form.review_learning.errors }}<br>
-              <label for="id_review_learning">Review learning:</label><br>
-            {{ form.review_learning }}
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table>
-              <tr>
-                <td colspan="3" class="learning-level"> 
-                  {{ form.learning_level.errors }}<br>
-                  <label for="id_learning_level">Learning levels (0 to 10):</label>
-                </td>
-              </tr>
-              <tr>
-                <td>🙂</td>
-                <td class="learning-level">
-                  {{ form.frustration_level.as_hidden }}
-                  {{ form.learning_level }}
-                </td>
-                <td>👹</td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            {{ form.struggle_in_progess }}
-            {{ form.code_screen_shot.as_hidden }}
-            {{ form.struggle.as_hidden }}
-            {{ form.helpful_link.errors }}<br>
-              <label for="id_helpful_link">Helpful link:</label><br>
-            {{ form.helpful_link }}
-          </td>
-          <td>
-            {% csrf_token %}
-            <input id="submit" type="submit" value="Submit">
-          </td>
-        </tr>
-      </table>
-    </form> -->
-  <!-- </div> -->
-
-
-	<!-- <form action="{% url 'struggles_input' %}" method="post" enctype="multipart/form-data">
-		{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Update"> 
-</form> -->
+	<div class="struggle-review-details">
+		<form action="{% url 'struggle-complete' pk=object.pk %}" method="post" enctype="multipart/form-data">
+			<table class="struggle-review-details">
+				<tr>
+					<td colspan="2" class="main-headings"><h1>Have you solved your struggle?</h1></td>
+					<td>
+		    		{{ form.struggle_in_progess }}
+		    	</td> 
+		    </tr>
+		  	<tr>
+		      <td colspan="3">
+		        {% if form.errors %}
+		          <p class="errors">Please correct the error below.{{ form.errors }}.</p>
+		        {% endif %}
+		      </td>
+		    </tr>
+				<tr>
+					<td>
+						{{ form.time_started.as_hidden }}
+						 {{object.id }}
+		        {{ form.time_ended.errors }}<br>
+		          <label for="id_time_ended">Completed time:</label><br>
+		        {{ form.time_ended }}
+					</td>
+					<td>
+						{{ form.plan.as_hidden }}
+		        {{ form.code_screen_shot_update.errors }}<br>
+		          <label for="id_code_screen_shot_update">Code screen shot:</label><br>
+		        {{ form.code_screen_shot_update}}
+					</td>
+					<td>
+		        {{ form.code_screen_shot.as_hidden }}
+		        {{ form.struggle.as_hidden }}
+		        {{ form.helpful_link.errors }}<br>
+		          <label for="id_helpful_link">Helpful link:</label><br>
+		        {{ form.helpful_link }}
+					</td>
+				</tr>
+				<tr>
+					<table>
+		        <tr>
+		          <td colspan="3" class="learning-level"> 
+		            {{ form.learning_level.errors }}<br>
+		            <label for="id_learning_level">Learning levels (0 to 10):</label>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td>🙂</td>
+		          <td class="learning-level">
+		            {{ form.frustration_level.as_hidden }}
+		            {{ form.learning_level }}
+		          </td>
+		          <td>👹</td>
+		        </tr>
+		    	</table>
+				</tr>
+				<tr>
+					<td colspan="2">
+						{{ form.title.as_hidden }}
+		        {{ form.review_learning.errors }}<br>
+		          <label for="id_review_learning">Review learning:</label><br>
+		        {{ form.review_learning }}
+		      </td>
+					<td>
+						{% csrf_token %}
+		        <input id="submit" type="submit" value="Submit">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>
 
