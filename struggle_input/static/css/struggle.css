@@ -46,16 +46,17 @@ label {
   font-weight: bold;
 }
 
-textarea[name=review_learning]{
-  width: 600px;
-  background-color: #905794;
-  border: none;
-  color: white;
-  padding: 12px 20px;
-  text-decoration: none;
-  margin-top: 50px;
+textarea[id=id_review_learning]{
   cursor: pointer;
+  width: 800px;
+  display: inline-block;
+  padding: 12px 20px;
+  margin: 8px 0px;
+  border: 2px solid grey;
+  background-color: #CDE1EB;
   font-size: 20px;
+  font-color: black;
+  margin-left: 15px;
 }
 
 input[id=search]{
@@ -77,22 +78,15 @@ input, textarea {
   display: block;
   width: 300px;
   padding: 12px 20px;
-  margin: 8px 0px;
+  margin: 4px 0px;
   border: 2px solid grey;
   background-color: #CDE1EB;
   font-size: 15px;
-  font-color: grey;
+  font-color: black;
 }
 
-textarea[id=id_review_learning]{
-  /*width: 30%;*/
-  display: inline-block;
-  padding: 12px 20px;
-  margin: 8px 0px;
-  border: 2px solid grey;
-  background-color: #CDE1EB;
-  font-size: 15px;
-  font-color: grey;
+input[type=file] {
+  font-color: black;
 }
 
 textarea {
@@ -110,6 +104,7 @@ input[id=submit]{
   cursor: pointer;
   font-size: 20px;
   display: inline-block;
+  margin-top: 80px;
 }
 
 input[id=submit]:hover {
@@ -122,18 +117,39 @@ input[id=id_frustration_level] {
 }
 
 input[id=id_learning_level] {
-  width: 550px;
+  width: 750px;
   height: 20px;
 }
 
-
-input[type=checkbox] {
-  zoom: 5.5;
-  width: 20px;
+#id_struggle_in_progess-span * {
+  visibility: hidden;
 }
 
-.struggle-detail-review td {
-  width:800px;
+input#id_struggle_in_progess + label::after {
+  visibility: visible;
+  content: "💥 🌪 Click to complete your struggle? 😭 ☄️";
+  color: yellow;
+  background:  #003366;
+  padding: 8px;
+  font-size: 60px;
+  border-radius: 5px;
+  border: 2px solid yellow;
+  border-style: dotted;
+}
+
+input#id_struggle_in_progess:checked + label::after {
+  content: "🎖 🎺 What a relief!! Finally! 🌤 💫";
+  color: yellow;
+  background:  #003366;
+  font-size: 60px;
+  border-radius: 5px;
+  border: 2px solid yellow;
+  border-style: dotted;
+}
+
+.struggle-detail-to-review td {
+  width:850px;
+  padding-right: 30px;
 }
 
 .frustration-level {
@@ -185,38 +201,48 @@ input[type=checkbox] {
   padding-left: 10px;
 }
 
-.struggle-details-page p {
+.struggle-details-on-review-page p {
   color: white;
   font-size: 25px;
 }
 
-.struggle-details-page {
+.struggle-details-on-review-page {
   background-color: #905794;
   margin: 50px;
 }
 
-.struggle-details-page td {
+.struggle-details-on-review-pagee td {
   padding: 10px;
   width: 50%;
 }
 
-.struggle-details-page {
+.struggle-details-on-review-page {
   padding: 20px;
 }
 
-.struggle-details-page table, tr, td, h2 {
+.struggle-details-on-review-page table, tr, td, h2 {
   font-size: 35px;
   color: #ffe5f2;
 }
 
-.struggle-review-details table {
+.struggle-reviewing-details {
+  background-color: #003366;
+  padding-left: 30px;
+  padding-bottom: 10px
+}
+
+.struggle-reviewing-details table tr td h1 {
+  text-align: left;
+  font-size: 50px;
+  padding-left: 30px;
+}
+
+.struggle-reviewing-details-spaceing-right-table div {
   padding-left: 50px;
 }
 
-.struggle-review-details {
-  /*margin: 20px;*/
-  padding-left: 10px;
-  /*float: left;*/
+.struggle-review-details-heading {
+  height: 20px;
 }
 
 .struggle-details-heading {
@@ -231,10 +257,6 @@ input[type=checkbox] {
   padding-left: 30%;
   padding-right: 30%;
   color: black;
-}
-
-.learning-level {
-  padding-left: 20px;
 }
 
 .errors {

@@ -2,19 +2,19 @@
 
 <html lang="en">
 <head>
-    <title>Struggle here</title>
-    <script type="text/javascript" src="{{ STATIC_URL }} /static/javascript/struggle.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/struggle.css' %}">
-    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
-    
-    <script>
-    </script>
+  <title>Struggle here</title>
+  <script type="text/javascript" src="{{ STATIC_URL }} /static/javascript/struggle.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/struggle.css' %}">
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+  
+  <script>
+  </script>
 </head>
 <body>
 	<h1 class="main-headings">Struggle detail</h1>
-	<div class="struggle-details-page">
-		<table class="struggle-detail-review">
+	<div class="struggle-details-on-review-page">
+		<table class="struggle-detail-to-review">
 			<tr>
 				<td><h2>Date: </h2><p>{{ object.time_started }}</p></td>
 				<td><h2>Title: </h2><p>{{ object.title }}</p></td>
@@ -41,13 +41,23 @@
 			</tr>
 		</table>
 	</div>
-	<div class="struggle-review-details">
+	<div class="struggle-reviewing-details">
 		<form action="{% url 'struggle-complete' pk=object.pk %}" method="post" enctype="multipart/form-data">
-			<table class="struggle-review-details">
+			<table>
+				{{ form.time_started.as_hidden }}
+    		{{ form.plan.as_hidden }}
+    		{{ form.code_screen_shot.as_hidden }}
+        {{ form.struggle.as_hidden }}
+        {{ form.frustration_level.as_hidden }}
+        {{ form.title.as_hidden }}
 				<tr>
-					<td colspan="2" class="main-headings"><h1>Have you solved your struggle?</h1></td>
-					<td>
-		    		{{ form.struggle_in_progess }}
+					<td colspan="3">
+						<h1>
+							<span id="id_struggle_in_progess-span">
+		    				{{ form.struggle_in_progess }}
+		    			<label for="id_struggle_in_progess"></label>
+		    		</span>
+						</h1>
 		    	</td> 
 		    </tr>
 		  	<tr>
@@ -57,58 +67,70 @@
 		        {% endif %}
 		      </td>
 		    </tr>
-				<tr>
-					<td>
-						{{ form.time_started.as_hidden }}
-						 {{object.id }}
-		        {{ form.time_ended.errors }}<br>
-		          <label for="id_time_ended">Completed time:</label><br>
-		        {{ form.time_ended }}
-					</td>
-					<td>
-						{{ form.plan.as_hidden }}
-		        {{ form.code_screen_shot_update.errors }}<br>
-		          <label for="id_code_screen_shot_update">Code screen shot:</label><br>
-		        {{ form.code_screen_shot_update}}
-					</td>
-					<td>
-		        {{ form.code_screen_shot.as_hidden }}
-		        {{ form.struggle.as_hidden }}
-		        {{ form.helpful_link.errors }}<br>
-		          <label for="id_helpful_link">Helpful link:</label><br>
-		        {{ form.helpful_link }}
-					</td>
-				</tr>
-				<tr>
-					<table>
-		        <tr>
-		          <td colspan="3" class="learning-level"> 
-		            {{ form.learning_level.errors }}<br>
-		            <label for="id_learning_level">Learning levels (0 to 10):</label>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td>🙂</td>
-		          <td class="learning-level">
-		            {{ form.frustration_level.as_hidden }}
-		            {{ form.learning_level }}
-		          </td>
-		          <td>👹</td>
-		        </tr>
-		    	</table>
-				</tr>
-				<tr>
-					<td colspan="2">
-						{{ form.title.as_hidden }}
-		        {{ form.review_learning.errors }}<br>
-		          <label for="id_review_learning">Review learning:</label><br>
-		        {{ form.review_learning }}
-		      </td>
-					<td>
-						{% csrf_token %}
-		        <input id="submit" type="submit" value="Submit">
-					</td>
-				</tr>
+		    <tr>
+		    	<td>
+		    		<table class="struggle-reviewing-details">
+							<tr>
+								<td colspan="2">
+					        {{ form.review_learning.errors }}<br>
+					          <label for="id_review_learning">Review learning:</label><br>
+					        {{ form.review_learning }}
+					      </td>
+							</tr>
+						</table>
+						<table class="struggle-reviewing-details">
+			        <tr>
+			          <td colspan="2" class="learning-level"> 
+			            {{ form.learning_level.errors }}<br>
+			            <label for="id_learning_level">Learning levels (0 to 10):</label>
+			          </td>
+			        </tr>
+			        <tr>
+			          <td>👎</td>
+			          <td class="learning-level">
+			            {{ form.learning_level }}
+			          </td>
+			          <td>👍 </td>
+			        </tr>
+			    	</table>
+		    	</td>
+		    	<td colspan="2">
+			    	<table>
+			    		<tr class="struggle-reviewing-details-spaceing-right-table">
+			    			<td>
+			    				<div>
+			    					{{ form.time_ended.errors }}<br>
+					          <label for="id_time_ended">Completed time:</label><br>
+					        	{{ form.time_ended }}
+			    				</div>
+			    			</td>
+			    			<td>
+			    				<div>
+			    					{{ form.code_screen_shot_update.errors }}<br>
+					          <label for="id_code_screen_shot_update">Code screen shot:</label><br>
+					        	{{ form.code_screen_shot_update}}
+			    				</div>	
+			    			</td>
+			    			<td></td>
+			    		</tr>
+			    		<tr class="struggle-reviewing-details-spaceing-right-table">
+			    			<td>
+			    				<div>
+			    					{{ form.helpful_link.errors }}<br>
+					          <label for="id_helpful_link">Helpful link:</label><br>
+					       		{{ form.helpful_link }}
+			    				</div>
+			    			</td>
+			    			<td>
+			    				<div>
+			    					{% csrf_token %}
+					        	<input id="submit" type="submit" value="Submit">
+			    				</div>
+					    	</td>
+			    		</tr>
+			    	</table>
+			    </td>
+		    </tr>
 			</table>
 		</form>
 	</div>

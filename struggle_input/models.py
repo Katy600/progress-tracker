@@ -10,7 +10,7 @@ import glob
 class StruggleData(models.Model):
 	title = models.CharField(max_length=40)
 	time_started = models.DateTimeField(default=datetime.now)
-	time_ended = models.DateTimeField(blank=True, null=True)
+	time_ended = models.DateTimeField(default=datetime.now, blank=True, null=True)
 	struggle = models.TextField()
 	plan = models.TextField(verbose_name ='plan of action')
 	frustration_level = models.IntegerField(verbose_name="frustration level (Rate 0 to 10)")
