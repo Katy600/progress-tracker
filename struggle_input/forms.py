@@ -21,6 +21,6 @@ class StruggleModelForm(ModelForm):
   	initial=datetime.now)
 
   class Meta:
-      model = StruggleData
-      fields = ['title', 'time_started', 'time_ended', 'struggle', 'plan', 'frustration_level', 'learning_level', 'code_screen_shot', 'review_learning','struggle_in_progess', 'code_screen_shot_update', 'helpful_link']
-      ordering = ['-priority', 'time_started']
+    model = StruggleData
+    fields = ['title', 'time_started', 'time_ended', 'struggle', 'plan', 'frustration_level', 'learning_level', 'code_screen_shot', 'review_learning','struggle_in_progess', 'code_screen_shot_update', 'helpful_link']
+    ordering = ['-priority', 'time_started']

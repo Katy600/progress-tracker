@@ -1,126 +1,113 @@
 {% load staticfiles %}
 <html lang="en">
 <head>
-    <title>Struggle here</title>
-    <script type="text/javascript" src="{{ STATIC_URL }} /static/javascript/struggle.js"></script>
-    <link rel="stylesheet" href="{% static 'css/struggle.css' %}">
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+  <title>Struggle here</title>
+  <script type="text/javascript" src="{{ STATIC_URL }} /static/javascript/struggle.js"></script>
+  <link rel="stylesheet" href="{% static 'css/struggle.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
 
-    <script>
-    </script>
+  <script>
+  </script>
 </head>
 <body>
-  <div class="left">
-    <form action="{% url 'struggles_input' %}" method="post" enctype="multipart/form-data">
-      <table class="enter-struggle-table">
-        <tr>
-          <td colspan="2" class="main-headings"><h1>Enter struggle</h1></td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            {% if form.errors %}
-              <p class="errors">Please correct the error below.{{ form.errors }}.</p>
-            {% endif %}
-          </td>
-        </tr>
-        <tr>
-          <td>
-            {{ form.time_started.errors }}<br>
-              <label for="id_time_started">Date:</label><br>
-            {{ form.time_started }}
-          </td>
-          <td>
-            {{ form.title.errors }}<br>
-              <label for="id_title">Title:</label><br>
-            {{ form.title }}
-          </td>
-        </tr>
-        <tr>
-          <td>
-            {{ form.struggle.errors }}<br>
-              <label for="id_struggle">Struggle:</label><br>
-            {{ form.struggle }}
-          </td>
-          <td>
-            {{ form.plan.errors }}<br>
-              <label for="id_plan">Plan:</label><br>
-            {{ form.plan }}
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <table>
+  <table>
+    <tr>
+      <td>
+        <div class="left-of-initial-form">
+          <form action="{% url 'struggles_input' %}" method="post" enctype="multipart/form-data">
+            <table class="enter-struggle-table">
               <tr>
-                <td colspan="3" class="frustration-level">
-                 {{ form.frustration_level.errors }}<br>
-                    <label for="id_frustration_level">Frustration levels (0 to 10):</label>
+                <td colspan="2"><h1>😭 Enter your struggle 😡</h1></td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  {% if form.errors %}
+                    <p class="errors">Please correct the error below.{{ form.errors }}.</p>
+                  {% endif %}
                 </td>
               </tr>
               <tr>
-                <td>😕</td>
-                <td class="frustration-level">
-                  {{ form.frustration_level }}
+                <td>
+                  {{ form.time_started.errors }}<br>
+                    <label for="id_time_started">Date:</label><br>
+                  {{ form.time_started }}
                 </td>
-                <td>👹</td>
+                <td>
+                  {{ form.title.errors }}<br>
+                    <label for="id_title">Title:</label><br>
+                  {{ form.title }}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  {{ form.struggle.errors }}<br>
+                    <label for="id_struggle">Struggle:</label><br>
+                  {{ form.struggle }}
+                </td>
+                <td>
+                  {{ form.plan.errors }}<br>
+                    <label for="id_plan">Plan:</label><br>
+                  {{ form.plan }}
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <table>
+                    <tr>
+                      <td colspan="3" class="frustration-level">
+                        {{ form.frustration_level.errors }}<br>
+                        <label for="id_frustration_level">Frustration levels (0 to 10):</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>😕</td>
+                      <td class="frustration-level">
+                        {{ form.frustration_level }}
+                      </td>
+                      <td>👹</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  {{ form.code_screen_shot.errors }}<br>
+                    <label for="id_code_screen_shot">Upload your code here:</label><br>
+                  {{ form.code_screen_shot }}
+                </td>
+                <td>
+                  {% csrf_token %}
+                  {{ form.struggle_in_progess.as_hidden }}
+                  <input id="submit" type="submit" value="Submit">
+                </td>
               </tr>
             </table>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            {{ form.code_screen_shot.errors }}<br>
-              <label for="id_code_screen_shot">Upload your code here:</label><br>
-            {{ form.code_screen_shot }}
-          </td>
-          <td>
-            {% csrf_token %}
-            {{ form.struggle_in_progess.as_hidden }}
-            <input id="submit" type="submit" value="Submit">
-          </td>
-        </tr>
-      </table>
-    </form>
-  </div>
-
-  <div class="right">
-    <h1>Search struggle</h1>
-    {% if errors %}
-      {% for error in errors %}
-          {{ error }}
-          {% endfor %}
-    {% endif %}
-    <form  action="{% url 'struggles_search' %}" method="get">
-      <input class="search-button" type="text" name="q">
-      <input id="search" class="search-button" type="submit" value="Search">
-    </form>
-    {% if searching %}
-      <h1>View struggle</h1>
-      <p>You searched for: <strong>{{ query }}</strong></p>
-    {% endif %} 
-      {% if struggles %} <br>
-      <p>Found {{ struggles|length }} struggle{{ struggles|pluralize }}</p>
-        {% for struggle in struggles %}               
-          <a class="space" href="{% url 'struggle-detail' pk=struggle.pk %}">
-            <p class="space" ><li>{{ struggle.title }}</li></p>
-          </a>
-        {% endfor %}
-      {% else %}           
-        <br><p>No struggles matched your search criteria.</p>       
-    {% endif %}
-
-    <h1>Struggles in progress</h1>
-        {% for struggle in struggles_in_progress %}
-          {% if struggle.struggle_in_progess == False  %}               
-            <a class="space" href="{% url 'struggle-complete' pk=struggle.id %}">
-              <p class="space" ><li>{{ struggle.title }}</li></p>
-            </a>
-          {% endif%}
-        {% empty %}           
-            <br><p>No struggles in progress.</p>  
-          
-        {% endfor %}     
-  </div>
-
+          </form>
+        </div>
+      </td>
+      <td>
+        <div class="struggle-updates-section">
+          <div class="struggles-in-progress">
+            <h2>Struggles in progress</h2>
+            {% for struggle in struggles_in_progress %}
+              {% if struggle.struggle_in_progess == False  %}
+              <div class="struggles-in-progress-link">          
+                <a href="{% url 'struggle-complete' pk=struggle.id %}">
+                  <p><li> 💨 {{ struggle.title }}</li></p>
+                </a>
+              </div>
+              {% endif%}
+            {% empty %}           
+              <br><p>No struggles in progress.</p>  
+            {% endfor %}   
+          </div>
+          <div class="completed-struggles-link">
+            <a href="{% url 'struggle-list' %}">🔥 Completed struggles 💥</a> 
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>

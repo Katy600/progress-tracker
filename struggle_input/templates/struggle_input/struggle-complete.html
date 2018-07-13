@@ -12,31 +12,29 @@
   </script>
 </head>
 <body>
-	<h1 class="main-headings">Struggle detail</h1>
 	<div class="struggle-details-on-review-page">
-		<table class="struggle-detail-to-review">
+		<table>
 			<tr>
-				<td><h2>Date: </h2><p>{{ object.time_started }}</p></td>
-				<td><h2>Title: </h2><p>{{ object.title }}</p></td>
-			</tr>
-			<tr>
-				<td><h2>Struggle: </h2><p>{{ object.struggle }}</p></td>
-				<td><h2>Plan: </h2><p>{{ object.plan }}</p>
+				<td>
+					<h1 id="struggle">{{ object.title }}</h1>
+				</td>
+				<td colspan="3">
+					<h2 id="date">{{ object.time_started }}</h2>
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<h2>Screen shot:</h2>
-				</td>
-				<td><h2>Frustration Level: </h2><p>{{ object.frustration_level }}</p></td>
-			</tr>
-			<tr>
-				<td>
 					{% if object.code_screen_shot  %}
 						<img src="{{ object.code_screen_shot.url }}" alt="code screen shot" width=700" height="420">
 					{% else %}
 						<p>No screen shot</p>
 					{% endif %}
+					<h2>Frustration Level: {{ object.frustration_level }}</h2>
+				</td>
+				<td colspan="3">
+					<h2>Struggle:</h2><p>{{ object.struggle }}</p>
+					<h2>Plan: </h2><p>{{ object.plan }}</p>
 				</td>
 			</tr>
 		</table>
@@ -55,8 +53,8 @@
 						<h1>
 							<span id="id_struggle_in_progess-span">
 		    				{{ form.struggle_in_progess }}
-		    			<label for="id_struggle_in_progess"></label>
-		    		</span>
+		    				<label for="id_struggle_in_progess"></label>
+		    			</span>
 						</h1>
 		    	</td> 
 		    </tr>
@@ -124,7 +122,7 @@
 			    			<td>
 			    				<div>
 			    					{% csrf_token %}
-					        	<input id="submit" type="submit" value="Submit">
+					        	<input id="submit-complete" type="submit" value="Submit">
 			    				</div>
 					    	</td>
 			    		</tr>

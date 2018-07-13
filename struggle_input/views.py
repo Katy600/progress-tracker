@@ -5,23 +5,22 @@ from struggle_input import views
 from .models import StruggleData
 from .forms import StruggleModelForm
 import datetime
+from django.utils import timezone
 from django.urls import reverse
 from django.template import RequestContext
 from django.views.generic.edit import FormView
 from django.views.generic.detail import DetailView
-from django.utils import timezone
 from django.views.generic.edit import UpdateView
+from django.views.generic.list import ListView
 
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
 
-
-
 def search(request):
-  form = StruggleModelForm()
+  # form = StruggleModelForm()
   errors = []
-  struggles_in_progress = StruggleData.objects.filter(struggle_in_progess=True)
+  # struggles_in_progress = StruggleData.objects.filter(struggle_in_progess=True)
 
   if 'q' in request.GET:
     q = request.GET['q']
@@ -31,8 +30,19 @@ def search(request):
       errors.append('Please enter at most 20 characters.')
     else:
       struggles = StruggleData.objects.filter(title__icontains=q)
-      return render(request, 'struggle_input/struggle_form.html',{'struggles': struggles, 'query': q, 'form': form, 'searching': True, 'struggles_in_progress': struggles_in_progress })
-  return render(request, 'struggle_input/struggle_form.html', {'errors': errors, 'form': form, 'searching': True,  'struggles_in_progress': struggles_in_progress})
+      return render(request, 'struggle_input/struggle-list.html',{'struggles': struggles, 'query': q, 'searching': True })
+  return render(request, 'struggle_input/struggle-list.html', {'errors': errors, 'searching': True})
+
+
+class StruggleListView(ListView):
+  model = StruggleData
+  template_name = 'struggle_input/struggle-list.html'
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context['struggles'] = StruggleData.objects.all()
+
+    return context
 
 
 class AddStruggle(FormView):

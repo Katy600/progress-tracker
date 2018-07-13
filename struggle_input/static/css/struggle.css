@@ -7,37 +7,16 @@ body {
 }
 
 p {
-  color: #d2effd;
+  color: white;
   display: inline;
   font-size: 20px;
-  font-weight: bold;
+ /* font-weight: bold;*/
   width: 400px;
-  padding-bottom: 15px;
-}
-
-a {
-  color: hotpink;
-  display: inline;
-  font-size: 20px;
-  font-weight: bold;
-  padding-top: 50px;\
-  width: 400px;
-}
-
-a:hover {
-  color: #fd1388;
 }
 
 h1 {
   color: white;
-  font-size: 50px;
-}
-
-h2 {
-  font-size: 40px;
-  display: inline;
-  padding-bottom: 20px;
-  color: white;
+  font-size: 60px;
 }
 
 label {
@@ -59,13 +38,17 @@ textarea[id=id_review_learning]{
   margin-left: 15px;
 }
 
+input[class=search-button]{
+  width: 500px;
+}
+
 input[id=search]{
   border: none;
   color: white;
   padding: 12px 20px;
   text-decoration: none;
   cursor: pointer;
-  width: 300px;
+  width: 500px;
   font-size: 20px;
   background-color: #9C8B91;
 }
@@ -80,7 +63,7 @@ input, textarea {
   padding: 12px 20px;
   margin: 4px 0px;
   border: 2px solid grey;
-  background-color: #CDE1EB;
+  background-color: #f9e2ca;
   font-size: 15px;
   font-color: black;
 }
@@ -95,7 +78,7 @@ textarea {
 }
 
 input[id=submit]{
-  background-color: #905794;
+  background-color: #f6520a;
   border: none;
   color: white;
   padding: 12px 20px;
@@ -105,11 +88,27 @@ input[id=submit]{
   font-size: 20px;
   display: inline-block;
   margin-top: 80px;
+  border-radius: 5px;
 }
 
 input[id=submit]:hover {
-  background-color: #785794;
+  background-color: #d80000;
 }
+
+input[id=submit-complete]{
+  background-color: yellow;
+  border: none;
+  color: #003366;
+  padding: 12px 20px;
+  text-decoration: none;
+  margin-top: 50px;
+  cursor: pointer;
+  font-size: 20px;
+  display: inline-block;
+  margin-top: 80px;
+  border-radius: 5px;
+}
+
 
 input[id=id_frustration_level] {
   width: 550px;
@@ -138,18 +137,13 @@ input#id_struggle_in_progess + label::after {
 }
 
 input#id_struggle_in_progess:checked + label::after {
-  content: "🎖 🎺 What a relief!! Finally! 🌤 💫";
+  content: "🎖 🎺 What a relief! 🌤 💫";
   color: yellow;
   background:  #003366;
   font-size: 60px;
   border-radius: 5px;
   border: 2px solid yellow;
   border-style: dotted;
-}
-
-.struggle-detail-to-review td {
-  width:850px;
-  padding-right: 30px;
 }
 
 .frustration-level {
@@ -164,24 +158,138 @@ input#id_struggle_in_progess:checked + label::after {
   width: 600px; 
 }
 
-.main-headings {
-  text-align: center;
-  padding-top: 20px;
+.struggle-updates-section {
+  background-color: #003366;
+  border-radius: 25px;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  margin-left: 40px;
+  border: 2px solid yellow;
+  border-style: dotted;
 }
 
-.right {
-  background-color: #905794;
-  float: right;
-  width: 20%;
-  padding: 20px;
+.struggles-in-progress {
   padding-left: 50px;
-  margin-top: 90px;
+  padding-bottom: 50px;
   margin-bottom: 90px;
-  height: 85%;
-  margin-right: 180px;
+  margin-right: 60px;
+  border-radius: 25px;
 }
 
-.left {
+.struggles-in-progress h2 {
+  font-size: 50px;
+  color: white;
+  margin-bottom: 0px;
+  text-shadow: 2px 2px #fff400;
+}
+
+.struggles-in-progress a {
+  font-size: 30px;
+  margin-bottom: 0px;
+  text-decoration: none;
+}
+
+.struggles-in-progress a:hover {
+  color: yellow;
+}
+
+.struggles-in-progress a, p, li {
+  list-style: none;
+}
+
+.struggles-in-progress a{
+  color: yellow;
+}
+
+.struggles-in-progress-link {
+  border-radius: 25px;
+  border: 2px solid yellow;
+  border-style: dotted;
+}
+
+.struggles-in-progress-link li:hover{
+  background-color: #f97115;
+  border-radius: 25px;
+}
+
+.filter-enter {
+  padding-left: 35%;
+}
+
+.filter-enter h1 {
+  padding-left: 30px;
+}
+
+.filter-struggles {
+  padding-left: 50px;
+  padding-bottom: 50px;
+  border-radius: 25px;
+  background-color: #003366;
+  border-radius: 25px;
+  margin-left: 0px;
+  border: 2px solid yellow;
+  border-style: dotted;
+  height: 95%;
+}
+
+.struggle-list {
+  width: 50%;
+}
+
+.struggles-list h2 {
+  font-size: 50px;
+  color: white;
+  margin-bottom: 0px;
+  text-shadow: 2px 2px #fff400;
+}
+
+.struggles-list a {
+  font-size: 30px;
+  margin-bottom: 0px;
+  text-decoration: none;
+  color: #a1f60a;
+}
+
+.struggles-list a, p, li {
+  list-style: none;
+}
+
+.struggles-list-link {
+  border-radius: 25px;
+  border: 2px solid yellow;
+  border-style: dotted;
+  width: 30%;
+  margin-left: 35%;
+}
+
+.struggles-list-link li:hover{
+  background-color: green;
+  border-radius: 25px;
+}
+
+.completed-struggles-link {
+  padding-left: 10%;
+}
+
+.completed-struggles-link a {
+  font-size: 40px;
+  color: #a1f60a;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  text-decoration: none;
+  background-color: #003366;
+  padding:10px;
+  border-radius: 25px;
+  border: 2px solid #a1f60a;
+  border-style: dotted;
+  text-decoration: none;
+}
+
+.completed-struggles-link a:hover {
+  background-color: green;
+}
+
+.left-of-initial-form {
   float: left;
   padding: 20px;
   margin-top: 90px;
@@ -194,11 +302,35 @@ input#id_struggle_in_progess:checked + label::after {
   margin: 20px;
   padding: 10px;
   float: left;
+  border-style: dotted;
+  border-color: red;
+  border-radius: 25px;
+  background-color: #003366;
 }
 
 .enter-struggle-table td {
-  padding: 3px;
   padding-left: 10px;
+}
+
+.enter-struggle-table h1 {
+  text-align: center;
+  padding-top: 20px;
+  text-shadow: 2px 2px #ff0000;
+}
+
+.enter-struggle-table tr td label {
+  text-shadow: 2px 2px #ff0000;
+}
+
+.struggle-details-review-heading h1{
+  color: white;
+  font-size: 40px;
+  text-align: left;
+  padding-left: 20px;
+}
+
+#date {
+  margin-top: 30px;
 }
 
 .struggle-details-on-review-page p {
@@ -207,22 +339,22 @@ input#id_struggle_in_progess:checked + label::after {
 }
 
 .struggle-details-on-review-page {
-  background-color: #905794;
-  margin: 50px;
+  margin: 20px;
 }
 
-.struggle-details-on-review-pagee td {
-  padding: 10px;
-  width: 50%;
+.struggle-details-on-review-page td {
+  padding-right: 30px;
+  vertical-align: top;
 }
 
 .struggle-details-on-review-page {
   padding: 20px;
 }
 
-.struggle-details-on-review-page table, tr, td, h2 {
+.struggle-details-on-review-page table tr td h2 {
   font-size: 35px;
-  color: #ffe5f2;
+  color: #003366;
+  /*font-weight: bold;*/
 }
 
 .struggle-reviewing-details {
@@ -251,6 +383,34 @@ input#id_struggle_in_progess:checked + label::after {
   width: 100%;
   padding-left: 30%;
   color: white;
+}
+
+.struggle-detail {
+  margin: 20px;
+  padding: 20px;
+}
+
+.struggle-detail {
+  margin: 20px;
+  padding: 20px;
+}
+
+.struggle-detail tr td h2 {
+  font-size: 30px;
+  display: inline;
+  padding-bottom: 10px;
+  color: white;
+}
+
+.struggle-detail tr td h1 {
+  display: inline;
+  padding-bottom: 10px;
+  color: white;
+}
+
+.struggle-detail tr td {
+  padding-right: 15px;
+  padding-bottom: 10px;
 }
 
 .no-screen-shot {
