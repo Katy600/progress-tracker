@@ -18,10 +18,7 @@ from django.shortcuts import get_object_or_404, redirect, render, reverse
 
 
 def search(request):
-  # form = StruggleModelForm()
   errors = []
-  # struggles_in_progress = StruggleData.objects.filter(struggle_in_progess=True)
-
   if 'q' in request.GET:
     q = request.GET['q']
     if not q:
@@ -29,7 +26,7 @@ def search(request):
     elif len(q) > 20:
       errors.append('Please enter at most 20 characters.')
     else:
-      struggles = StruggleData.objects.filter(title__icontains=q)
+      struggles = StruggleData.objects.filter(title__icontains=q).filter(struggle_in_progess=True)
       return render(request, 'struggle_input/struggle-list.html',{'struggles': struggles, 'query': q, 'searching': True })
   return render(request, 'struggle_input/struggle-list.html', {'errors': errors, 'searching': True})
 

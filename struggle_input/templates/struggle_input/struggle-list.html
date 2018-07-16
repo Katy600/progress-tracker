@@ -19,43 +19,26 @@
 	        {{ error }}
 	      {% endfor %}
 	    {% endif %}
-
-	    <!-- {% if searching %}
-	      <p>You searched for: <strong>{{ query }}</strong></p> <br>
-	    {% endif %}  -->
-	  <!--   <p>Found {{ struggles|length }} struggle{{ struggles|pluralize }}</p> -->
 	    <form  action="{% url 'struggles_search' %}" method="get">
 	      <input class="search-button" type="text" name="q">
-	      <input id="search" class="search-button" type="submit" value="Search">
+	      <input id="search" class="search-button" type="submit" value="Filter">
 	    </form>
-	    <!-- {% if searching %}
-	      <p>You searched for: <strong>{{ query }}</strong></p> <br>
-	    {% endif %} 
-	    <p>Found {{ struggles|length }} struggle{{ struggles|pluralize }}</p> -->
+	    {% if searching %}
+	      <p>You searched for: <strong>{{ query }}</strong></p><br>
+	    {% endif %}
+	    <p>Found {{ struggles|length }} struggle{{ struggles|pluralize }}</p>
 	  </div>
     <div class="struggles-list">
-    {% for struggle in struggles %}   
-      {% if struggle.struggle_in_progess == True  %}
-      	<div class="struggles-list-link">          
-          <a class="space" href="{% url 'struggle-detail' pk=struggle.pk %}">
-            <p class="space" ><li> ☘️ {{ struggle.title }}</li></p>
-          </a>
-      	</div>
-      {% else %}           
-        <p>No struggles matched your search criteria.</p>   
-      {% endif %}
-    {% endfor %}
+	    {% for struggle in struggles %}   
+	      {% if struggle.struggle_in_progess == True %}
+	      	<div class="struggles-list-link">          
+	          <a href="{% url 'struggle-detail' pk=struggle.pk %}">
+	            <p><li>☘️ {{ struggle.time_ended|date }} - {{ struggle.title }} {{ struggle.struggle_in_progress }}</li></p>
+	          </a>
+	      	</div>  
+	      {% endif %}
+	    {% endfor %}
+  	</div>
 	</div>
-		<!-- 	<ul>
-				{% if object_list %}
-					{% for struggle in object_list %}
-						{% if struggle.struggle_in_progess == True %}
-							<a class="space" href="{% url 'struggle-detail' pk=struggle.pk %}">
-				      	<p class="space" ><li>{{ struggle.time_ended|date }} - {{ struggle.title }}</li></p>
-				    	</a>
-						{% endif %}
-				  {% endfor %}
-			  {% endif %}
-			</ul>  -->
 </body>
 </html>
