@@ -353,7 +353,6 @@ input#id_struggle_in_progess:checked + label::after {
 .struggle-details-on-review-page table tr td h2 {
   font-size: 35px;
   color: #003366;
-  /*font-weight: bold;*/
 }
 
 .struggle-reviewing-details {
@@ -391,7 +390,20 @@ input#id_struggle_in_progess:checked + label::after {
 
 .struggle-detail {
   margin: 20px;
-  padding: 20px;
+  padding: 20px;  
+}
+
+.struggle-detail div {
+ /* background-color: lightblue;*/
+  width: 650px;
+  height: 200px;
+  border: 2px solid white;
+  overflow: scroll;
+  color: white;
+  font-size: 20px;
+  font-family: 'Nanum Gothic', sans-serif;
+  padding: 5px;
+  margin-top: 10px;
 }
 
 .struggle-detail tr td h2 {

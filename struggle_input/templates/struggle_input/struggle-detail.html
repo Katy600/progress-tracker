@@ -22,12 +22,19 @@
 				<td><h2>Time ended: </h2><p>{{ object.time_ended }}</p></td>
 			</tr>
 			<tr>
-				<td><h2>Struggle:</h2><br><p>{{ object.struggle }}</p></td>
+				<td><h2>Struggle:</h2><br>
+					<p>
+						<div>
+							{{ object.struggle }}
+						</div>
+					</p>
+				</td>
 				<td>
 					<table>
 						<tr>
 							<td>
-								<h2>Frustration Level:</h2><p>{{ object.frustration_level }}</p>
+								<h2>Frustration Level:</h2>
+								<p>{{ object.frustration_level }}</p>
 							</td>
 							<td>
 								<h2 class="learning-level">Learning Level:</h2><p>{{ object.learning_level }}</p>
@@ -42,8 +49,19 @@
 				</td>
 			</tr>
 			<tr>
-				<td><h2>Plan:</h2><br><p>{{ object.plan }}</p></td>
-				<td><h2>Review Learning:</h2><br><p>{{ object.review_learning }}</p>
+				<td><h2>Plan:</h2>
+					<p>
+						<div>
+							{{ object.plan }}
+						</div>
+					</p>
+				</td>
+				<td><h2>Review Learning:</h2>
+				<p>
+					<div>
+						{{ object.review_learning }}
+					</div>
+				</p>
 			</tr>
 			<tr>
 				<td>
