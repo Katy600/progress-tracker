@@ -11,34 +11,29 @@
 	</script>
 </head>
 <body>
-	<div class="filter-struggles struggles-list">
-		<div class="filter-enter">
-			<h1>Filter Struggles</h1>
-	    {% if errors %}
-	      {% for error in errors %}
-	        {{ error }}
-	      {% endfor %}
-	    {% endif %}
-	    <form  action="{% url 'struggles_search' %}" method="get">
-	      <input class="search-button" type="text" name="q">
-	      <input id="search" class="search-button" type="submit" value="Filter">
-	    </form>
-	    {% if searching %}
-	      <p>You searched for: <strong>{{ query }}</strong></p><br>
-	    {% endif %}
-	    <p>Found {{ struggles|length }} struggle{{ struggles|pluralize }}</p>
-	  </div>
-    <div class="struggles-list">
-	    {% for struggle in struggles %}   
-	      {% if struggle.struggle_in_progess == True %}
-	      	<div class="struggles-list-link">          
-	          <a href="{% url 'struggle-detail' pk=struggle.pk %}">
-	            <p><li>☘️ {{ struggle.time_ended|date }} - {{ struggle.title }} {{ struggle.struggle_in_progress }}</li></p>
-	          </a>
-	      	</div>  
-	      {% endif %}
-	    {% endfor %}
-  	</div>
-	</div>
+	<div class="struggles-list">
+		<h1> 🌤  Completed struggles 🌈 </h1>
+    {% for struggle in struggles %}   
+      {% if struggle.struggle_in_progess == True %}
+      	<div class="struggles-list-link">          
+          <a href="{% url 'struggle-detail' pk=struggle.pk %}">
+            <p><li>☘️ {{ struggle.time_ended|date }} - {{ struggle.title }} {{ struggle.struggle_in_progress }}</li></p>
+          </a>
+      	</div>  
+      {% endif %}
+    {% endfor %}
+	</div>		
+	<div class="filter-struggle">
+		<h1>Filter Struggles</h1>
+    {% if errors %}
+      {% for error in errors %}
+        {{ error }}
+      {% endfor %}
+    {% endif %}
+    <form  action="{% url 'struggles_search' %}" method="get">
+      <input class="search-button" type="text" name="q">
+      <input id="search" class="search-button" type="submit" value="Filter">
+    </form>
+  </div>
 </body>
 </html>

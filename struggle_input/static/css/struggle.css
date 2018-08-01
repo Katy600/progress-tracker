@@ -200,6 +200,13 @@ input#id_struggle_in_progess:checked + label::after {
   color: yellow;
 }
 
+.struggles-in-progress p {
+  color: white;
+  display: inline;
+  font-size: 20px;
+  width: 400px;
+}
+
 .struggles-in-progress-link {
   border-radius: 25px;
   border: 2px solid yellow;
@@ -211,35 +218,32 @@ input#id_struggle_in_progess:checked + label::after {
   border-radius: 25px;
 }
 
-.filter-enter {
-  padding-left: 35%;
+.filter-struggle {
+  margin-left: 10%;
+  display: inline-block;
 }
 
 .filter-enter h1 {
   padding-left: 30px;
 }
 
-.filter-struggles {
+.filter-page {
   padding-left: 50px;
   padding-bottom: 50px;
   border-radius: 25px;
   background-color: #003366;
-  border-radius: 25px;
   margin-left: 0px;
-  border: 2px solid yellow;
-  border-style: dotted;
   height: 95%;
 }
 
-.struggle-list {
+.struggles-list {
+  margin-right: 50px;
+  background-color: #003366;
+  float: right;
+  height: 100%;
   width: 50%;
-}
-
-.struggles-list h2 {
-  font-size: 50px;
-  color: white;
-  margin-bottom: 0px;
-  text-shadow: 2px 2px #fff400;
+  padding: 10px;
+  padding-top: 20px;
 }
 
 .struggles-list a {
@@ -253,12 +257,23 @@ input#id_struggle_in_progess:checked + label::after {
   list-style: none;
 }
 
+.struggles-list p {
+ display: inline;
+}
+
+.struggles-list h1{
+ text-align: center;
+}
+
 .struggles-list-link {
   border-radius: 25px;
   border: 2px solid yellow;
   border-style: dotted;
-  width: 40%;
-  margin-left: 30%;
+  width: 95%;
+  display: inline-block;
+  float: right;
+  margin-right: 25px;
+  margin-left: 25px;
 }
 
 .struggles-list-link li:hover{
@@ -393,13 +408,12 @@ input#id_struggle_in_progess:checked + label::after {
   margin-left: 2%;
   padding: 2%;
   display: inline-block;
-  display: left;
   padding-top: 2%;
 }
 
 img {
   width: 85%;
-  height: 45%;
+  height: 55%;
 }
 
 .struggle-detail h2 {
@@ -444,7 +458,6 @@ img {
   margin: 0px;
   text-align: center;
   font-weight: bold;
- /* text-shadow: 2px 2px #3ab81d;*/
 }
 
 .all-struggle-details {
@@ -459,7 +472,7 @@ img {
   .no-screen-shot {
     padding-left: 30%;
     padding-right: 30%;
-    color: black;
+    color: white;
   }
 }
 
