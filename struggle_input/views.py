@@ -78,29 +78,25 @@ class DetailStruggleView(DetailView):
     seconds = duration.seconds
     return seconds
 
-  def format_duration(self, seconds):
+  def second_minute_hour(self, seconds):
     m, s = divmod(seconds, 60)
     h, m = divmod(m, 60)
-    if not h:
-      duration = '{} seconds'.format(s)
-    elif not h and m:
-      duration = '{} minutes {} seconds'.format(m, s)
-    else:
-      duration = '{} hours {} minutes {} seconds'.format(h, m, s)
 
-    return duration
+    return s, m, h
 
   def display_duration(self, **kwargs):
       time = self.get_times(**kwargs)
       duration = self.get_duration(time)
       seconds = self.convert_to_seconds(duration)
-      return self.format_duration(seconds)
+      return self.second_minute_hour(seconds)
 
   def get_context_data(self, **kwargs):
-    duration = self.display_duration(**kwargs)
-    print("duration", duration)
+    s, m, h = self.display_duration(**kwargs)
+    
     context = super().get_context_data(**kwargs)
-    context['duration'] = duration
+    context['hour'] = h
+    context['minute'] = m
+    context['second'] = s
     context['now'] = timezone.now()
     return context
 

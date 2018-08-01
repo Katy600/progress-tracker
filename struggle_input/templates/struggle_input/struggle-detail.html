@@ -12,8 +12,50 @@
     </script>
 </head>
 <body>
-	<div>
-		<table class="struggle-detail">
+	<div class="struggle-detail-data">
+		<h2>Frustration Level:</h2></br>
+		<p>{{ object.frustration_level }}</p></br>
+		<h2 class="learning-level">Learning Level:</h2></br>
+		<p>{{ object.learning_level }}</p></br>
+		<h2>Time taken:</h2></br>
+		{% if not hour %}
+			<p>{{ second }} seconds</p>
+		{% elif not hour and minute %}
+			<p>{{ minute }} minutes</p>
+			<p>{{ second }} seconds</p>
+		{% else %}
+			<p>{{ hour }} hours</p>
+			<p>{{ minute }} minutes</p>
+			<p>{{ second }} seconds</p>	
+		{% endif %}
+	</div>
+		<div class="all-struggle-details">
+			<h1 class="struggle-details-heading">{{ object.title }}</h1>
+			<div class="struggle-detail">
+				<h2>Struggle:</h2></br>
+				<p>{{ object.struggle }}</p></br>
+				{% if object.code_screen_shot %}
+					<img src="{{ object.code_screen_shot.url }}" alt="code screen shot">
+				{% else %}
+					<p class="no-screen-shot">No screen shot</p>
+				{% endif %}</br>
+				<h2>Plan:</h2></br>
+				<p>{{ object.plan }}</p></br>
+				<h2>Resolution:</h2></br>
+				<p>{{ object.review_learning }}</p></br>
+				{% if object.code_screen_shot_update %}
+					<img src="{{ object.code_screen_shot_update.url }}" alt="code screen shot update">
+				{% else %}
+					<p class="no-screen-shot">No screen shot</p>
+				{% endif %}</br>
+			</div>
+		</div>
+	
+	
+	
+	
+
+		<!-- <table class="struggle-detail">
 			<tr>
 				<td colspan="2"><h1 class="struggle-details-heading">{{ object.title }}</h1></td>
 			</tr>
@@ -81,8 +123,8 @@
 					{% endif %}
 				</td>
 			</tr>
-		</table>
-	</div>
+		</table> -->
+	<!-- </div> -->
 </body>
 </html>
 
