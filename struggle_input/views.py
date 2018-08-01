@@ -6,6 +6,8 @@ from .models import StruggleData
 from .forms import StruggleModelForm
 import datetime
 from django.utils import timezone
+# from datetime import datetime, timedelta
+from datetime import datetime, date
 from django.urls import reverse
 from django.template import RequestContext
 from django.views.generic.edit import FormView
@@ -62,8 +64,43 @@ class DetailStruggleView(DetailView):
   model = StruggleData
   template_name = 'struggle_input/struggle-detail.html'
 
+  def get_times(self, **kwargs):
+    time_started = kwargs['object'].time_started
+    time_ended = kwargs['object'].time_ended
+    return time_started, time_ended
+
+  def get_duration(self, time):
+    time_started, time_ended = time
+    duration = time_ended - time_started
+    return duration
+
+  def convert_to_seconds(self, duration):
+    seconds = duration.seconds
+    return seconds
+
+  def format_duration(self, seconds):
+    m, s = divmod(seconds, 60)
+    h, m = divmod(m, 60)
+    if not h:
+      duration = '{} seconds'.format(s)
+    elif not h and m:
+      duration = '{} minutes {} seconds'.format(m, s)
+    else:
+      duration = '{} hours {} minutes {} seconds'.format(h, m, s)
+
+    return duration
+
+  def display_duration(self, **kwargs):
+      time = self.get_times(**kwargs)
+      duration = self.get_duration(time)
+      seconds = self.convert_to_seconds(duration)
+      return self.format_duration(seconds)
+
   def get_context_data(self, **kwargs):
+    duration = self.display_duration(**kwargs)
+    print("duration", duration)
     context = super().get_context_data(**kwargs)
+    context['duration'] = duration
     context['now'] = timezone.now()
     return context
 

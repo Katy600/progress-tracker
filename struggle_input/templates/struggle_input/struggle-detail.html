@@ -18,10 +18,6 @@
 				<td colspan="2"><h1 class="struggle-details-heading">{{ object.title }}</h1></td>
 			</tr>
 			<tr>
-				<td><h2>Time started: </h2><p>{{ object.time_started }}</p></td>
-				<td><h2>Time ended: </h2><p>{{ object.time_ended }}</p></td>
-			</tr>
-			<tr>
 				<td><h2>Struggle:</h2><br>
 					<p>
 						<div>
@@ -33,11 +29,9 @@
 					<table>
 						<tr>
 							<td>
-								<h2>Frustration Level:</h2>
-								<p>{{ object.frustration_level }}</p>
-							</td>
-							<td>
-								<h2 class="learning-level">Learning Level:</h2><p>{{ object.learning_level }}</p>
+								<h2>Frustration Level: </h2><p>{{ object.frustration_level }}</p></br>
+								<h2 class="learning-level">Learning Level: </h2><p>{{ object.learning_level }}</p></br>
+								<h2>Time taken: </h2><p>{{ duration }}</p>
 							</td>
 						</tr>
 						<tr>

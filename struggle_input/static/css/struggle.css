@@ -380,12 +380,7 @@ input#id_struggle_in_progess:checked + label::after {
   text-align: center;
   width: 100%;
   padding-left: 30%;
-  color: white;
-}
-
-.struggle-detail {
-  margin: 20px;
-  padding: 20px;
+  color: #003366;
 }
 
 .struggle-detail {
@@ -410,7 +405,7 @@ input#id_struggle_in_progess:checked + label::after {
   font-size: 30px;
   display: inline;
   padding-bottom: 10px;
-  color: white;
+  color: #003366;
 }
 
 .struggle-detail tr td h1 {
