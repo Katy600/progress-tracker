@@ -9,8 +9,8 @@ import glob
 
 class StruggleData(models.Model):
 	title = models.CharField(max_length=40)
-	time_started = models.DateTimeField(default=datetime.now)
-	time_ended = models.DateTimeField(default=datetime.now, blank=True, null=True)
+	time_started = models.DateTimeField(auto_now_add=True, editable=False)
+	time_ended = models.DateTimeField(auto_now_add=True, blank=True, null=True, editable=False)
 	struggle = models.TextField()
 	plan = models.TextField(verbose_name ='plan of action')
 	frustration_level = models.IntegerField(verbose_name="frustration level (Rate 0 to 10)")
@@ -26,3 +26,4 @@ class StruggleData(models.Model):
 
 	class Meta:
 		ordering = ["-time_started", "title"]
+		verbose_name_plural = 'struggle data'

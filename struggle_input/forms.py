@@ -16,11 +16,8 @@ class StruggleModelForm(ModelForm):
   	widget=NumberInput(attrs={'type':'range',  'step': '1', 'max':'10', 'min':'0', 'value': '5'}))
   struggle = forms.CharField(
   	widget=forms.Textarea(attrs={'placeholder': 'Enter your struggle here...'}))
-  time_ended = forms.DateTimeField(
-  	required=False, 
-  	initial=datetime.now)
 
   class Meta:
     model = StruggleData
-    fields = ['title', 'time_started', 'time_ended', 'struggle', 'plan', 'frustration_level', 'learning_level', 'code_screen_shot', 'review_learning','struggle_in_progess', 'code_screen_shot_update', 'helpful_link']
+    fields = ['title', 'struggle', 'plan', 'frustration_level', 'learning_level', 'code_screen_shot', 'review_learning','struggle_in_progess', 'code_screen_shot_update', 'helpful_link']
     ordering = ['-priority', 'time_started']
