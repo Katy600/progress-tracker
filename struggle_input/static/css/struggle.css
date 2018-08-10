@@ -1,25 +1,19 @@
 
 body {
-  background-color: #9C8B91;
+  background-color: #72CAF6;
   font-family: 'Nanum Gothic', sans-serif;
   margin: 0px;
   padding: 0px;
+  width: 100%;
 }
-
-/*p {
-  color: white;
-  display: inline;
-  font-size: 20px;
-  width: 400px;
-}*/
 
 h1 {
   color: white;
-  font-size: 60px;
+  font-size: 50px;
 }
 
 label {
-  font-size: 25px;
+  font-size: 30px;
   color: white;
   font-weight: bold;
 }
@@ -37,6 +31,28 @@ textarea[id=id_review_learning]{
   margin-left: 15px;
 }
 
+textarea[id=id_struggle]{
+  cursor: pointer;
+  width: 100%;
+  border: 1% solid grey;
+  background-color: #CDE1EB;
+  font-size: 20px;
+  font-color: black;
+  box-sizing: border-box;
+}
+
+textarea[id=id_plan]{
+  cursor: pointer;
+  width: 100%;
+  display: inline-block;
+  margin: 1% 0px;
+  border: 1% solid grey;
+  background-color: #CDE1EB;
+  font-size: 20px;
+  font-color: black;
+  box-sizing: border-box;
+}
+
 input[class=search-button]{
   width: 500px;
 }
@@ -49,22 +65,31 @@ input[id=search]{
   cursor: pointer;
   width: 500px;
   font-size: 20px;
-  background-color: #9C8B91;
+  background-color: orange;
 }
 
 input[id=search]:hover {
-  background-color: #8A7C81;
+  background-color: #ff8d00;
 }
 
 input, textarea {
-  display: block;
-  width: 300px;
-  padding: 12px 20px;
-  margin: 4px 0px;
-  border: 2px solid grey;
-  background-color: #f9e2ca;
+  width: 85%;
+  padding: 3% 3%;
+  margin: 1% 0%;
+  border: 1% solid grey;
+  background-color: #CDE1EB;
   font-size: 15px;
   font-color: black;
+  resize: none;
+}
+
+input[id=id_code_screen_shot] {
+  height: 5%;
+  width: 100%;
+}
+
+input[id=id_title] {
+  width: 90%;
 }
 
 input[type=file] {
@@ -82,12 +107,12 @@ input[id=submit]{
   color: white;
   padding: 12px 20px;
   text-decoration: none;
-  margin-top: 50px;
   cursor: pointer;
-  font-size: 20px;
-  display: inline-block;
+  font-size: 30px;
   margin-top: 80px;
   border-radius: 5px;
+  width: 50%;
+  margin-left: 25%;
 }
 
 input[id=submit]:hover {
@@ -103,15 +128,14 @@ input[id=submit-complete]{
   margin-top: 50px;
   cursor: pointer;
   font-size: 20px;
-  display: inline-block;
   margin-top: 80px;
   border-radius: 5px;
 }
 
 
 input[id=id_frustration_level] {
-  width: 550px;
-  height: 20px;
+  width: 150%;
+  height: 80%;
 }
 
 input[id=id_learning_level] {
@@ -147,6 +171,7 @@ input#id_struggle_in_progess:checked + label::after {
 
 .frustration-level {
   padding-right: 20px;
+  width: 100%;
 }
 
 .learning-level {
@@ -162,9 +187,11 @@ input#id_struggle_in_progess:checked + label::after {
   border-radius: 25px;
   padding-bottom: 50px;
   padding-top: 50px;
-  margin-left: 40px;
+  margin-right: 40px;
   border: 2px solid yellow;
   border-style: dotted;
+  float: right;
+  height: 100%;
 }
 
 .struggles-in-progress {
@@ -178,8 +205,8 @@ input#id_struggle_in_progess:checked + label::after {
 .struggles-in-progress h2 {
   font-size: 50px;
   color: white;
-  margin-bottom: 0px;
   text-shadow: 2px 2px #fff400;
+  margin-bottom: 3%;
 }
 
 .struggles-in-progress a {
@@ -204,7 +231,6 @@ input#id_struggle_in_progess:checked + label::after {
   color: white;
   display: inline;
   font-size: 20px;
-  width: 400px;
 }
 
 .struggles-in-progress-link {
@@ -220,7 +246,14 @@ input#id_struggle_in_progess:checked + label::after {
 
 .filter-struggle {
   margin-left: 10%;
+  margin-top: 15%;
   display: inline-block;
+  width: 30%;
+  height: 40%;
+}
+
+.filter-struggle h1 {
+  text-shadow: 2px 2px orange;
 }
 
 .filter-enter h1 {
@@ -237,13 +270,13 @@ input#id_struggle_in_progess:checked + label::after {
 }
 
 .struggles-list {
-  margin-right: 50px;
   background-color: #003366;
   float: right;
   height: 100%;
   width: 50%;
   padding: 10px;
   padding-top: 20px;
+  padding-left: 2%;
 }
 
 .struggles-list a {
@@ -263,6 +296,7 @@ input#id_struggle_in_progess:checked + label::after {
 
 .struggles-list h1{
  text-align: center;
+ text-shadow: 2px 2px green;
 }
 
 .struggles-list-link {
@@ -270,7 +304,7 @@ input#id_struggle_in_progess:checked + label::after {
   border: 2px solid yellow;
   border-style: dotted;
   width: 95%;
-  display: inline-block;
+  display: block;
   float: right;
   margin-right: 25px;
   margin-left: 25px;
@@ -281,55 +315,64 @@ input#id_struggle_in_progess:checked + label::after {
   border-radius: 25px;
 }
 
-.completed-struggles-link {
+.completed-struggles {
   padding-left: 10%;
 }
 
-.completed-struggles-link a {
+.completed-struggles li {
+  margin-left: 2%;
+}
+
+
+.completed-struggles a {
   font-size: 40px;
   color: #a1f60a;
   margin-top: 20px;
   margin-bottom: 0px;
   text-decoration: none;
   background-color: #003366;
-  padding:10px;
+  padding:1%;
   border-radius: 25px;
   border: 2px solid #a1f60a;
   border-style: dotted;
   text-decoration: none;
 }
 
-.completed-struggles-link a:hover {
+.completed-struggles a:hover {
   background-color: green;
 }
 
+.completed-struggles h2 {
+  font-size: 50px;
+  color: white;
+  margin-bottom: 0px;
+  text-shadow: 2px 2px green;
+  margin-bottom: 3%;
+}
+
 .left-of-initial-form {
-  float: left;
-  padding: 20px;
-  margin-top: 90px;
-  margin-bottom: 90px;
-  height: 80%;
-  margin-left: 150px;
+  padding: 2%;
+  margin-left: 10%;
+  width: 100%;
+  height: 100%
 }
 
 .enter-struggle-table {
-  margin: 20px;
-  padding: 10px;
-  float: left;
+  display: inline-block
   border-style: dotted;
   border-color: red;
-  border-radius: 25px;
+  border-radius: 4%;
   background-color: #003366;
-}
-
-.enter-struggle-table td {
-  padding-left: 10px;
+  width: 45%;
+  margin-top: 2%;
+  margin-left: 2%;
 }
 
 .enter-struggle-table h1 {
+  font-size: 50px;
   text-align: center;
-  padding-top: 20px;
   text-shadow: 2px 2px #ff0000;
+  width: 100%;
 }
 
 .enter-struggle-table tr td label {
@@ -479,4 +522,10 @@ img {
 .errors {
   color: red;
   list-style-type: none;
+}
+
+@media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
 }

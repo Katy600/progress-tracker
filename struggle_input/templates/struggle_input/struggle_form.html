@@ -11,103 +11,105 @@
   </script>
 </head>
 <body>
+
+  <div class="struggle-updates-section">
+    <div class="struggles-in-progress">
+      <h2>Struggles in progress</h2>
+      {% for struggle in struggles_in_progress %}
+        {% if struggle.struggle_in_progess == False  %}
+        <div class="struggles-in-progress-link">          
+          <a href="{% url 'struggle-complete' pk=struggle.id %}">
+            <p><li> 💨 {{ struggle.title }}</li></p>
+          </a>
+        </div>
+        {% endif%}
+      {% empty %}           
+        <br><p>No struggles in progress.</p>  
+      {% endfor %}   
+    </div>
+    
+    <div class="completed-struggles">
+      <h2>Completed struggles</h2>
+      <a href="{% url 'struggle-list' %}">🔥 Find your struggle 💥</a> 
+    </div>
+  </div>
+  
+<div class="enter-struggle-table">
   <table>
     <tr>
       <td>
         <div class="left-of-initial-form">
           <form action="{% url 'struggles_input' %}" method="post" enctype="multipart/form-data">
-            <table class="enter-struggle-table">
-              <tr>
-                <td colspan="2"><h1>😭 Enter your struggle 😡</h1></td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  {% if form.errors %}
-                    <p class="errors">Please correct the error below.{{ form.errors }}.</p>
-                  {% endif %}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  {{ form.time_started.errors }}<br>
-                    <label for="id_time_started">Date:</label><br>
-                  {{ form.time_started }}
-                </td>
-                <td>
+              <table >
+                <tr>
+                  <td colspan="2"><h1>😭 Enter your struggle 😡</h1></td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    {% if form.errors %}
+                      <p class="errors">Please correct the error below.{{ form.errors }}.</p>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                <td style="width:50%">
                   {{ form.title.errors }}<br>
-                    <label for="id_title">Title:</label><br>
+                    <label for="id_title">Title:</label>
                   {{ form.title }}
                 </td>
-              </tr>
-              <tr>
-                <td>
-                  {{ form.struggle.errors }}<br>
-                    <label for="id_struggle">Struggle:</label><br>
-                  {{ form.struggle }}
-                </td>
-                <td>
-                  {{ form.plan.errors }}<br>
-                    <label for="id_plan">Plan:</label><br>
-                  {{ form.plan }}
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <table>
-                    <tr>
-                      <td colspan="3" class="frustration-level">
-                        {{ form.frustration_level.errors }}<br>
-                        <label for="id_frustration_level">Frustration levels (0 to 10):</label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>😕</td>
-                      <td class="frustration-level">
-                        {{ form.frustration_level }}
-                      </td>
-                      <td>👹</td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-              <tr>
-                <td>
+                <td style="width:50%">
                   {{ form.code_screen_shot.errors }}<br>
-                    <label for="id_code_screen_shot">Upload your code here:</label><br>
+                    <label for="id_code_screen_shot">Upload your code:</label><br />
                   {{ form.code_screen_shot }}
                 </td>
-                <td>
-                  {% csrf_token %}
-                  {{ form.struggle_in_progess.as_hidden }}
-                  <input id="submit" type="submit" value="Submit">
-                </td>
-              </tr>
-            </table>
-          </form>
-        </div>
-      </td>
-      <td>
-        <div class="struggle-updates-section">
-          <div class="struggles-in-progress">
-            <h2>Struggles in progress</h2>
-            {% for struggle in struggles_in_progress %}
-              {% if struggle.struggle_in_progess == False  %}
-              <div class="struggles-in-progress-link">          
-                <a href="{% url 'struggle-complete' pk=struggle.id %}">
-                  <p><li> 💨 {{ struggle.title }}</li></p>
-                </a>
-              </div>
-              {% endif%}
-            {% empty %}           
-              <br><p>No struggles in progress.</p>  
-            {% endfor %}   
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    {{ form.struggle.errors }}<br>
+                      <label for="id_struggle">Struggle:</label><br>
+                    {{ form.struggle }}
+                  </td>
+                </tr>
+                <tr>
+                   <td colspan="2">
+                    {{ form.plan.errors }}<br>
+                      <label for="id_plan">Plan:</label><br>
+                    {{ form.plan }}
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table>
+                      <tr>
+                        <td colspan="3" class="frustration-level">
+                          {{ form.frustration_level.errors }}<br>
+                          <label for="id_frustration_level">Frustration levels (0 to 10):</label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <!-- <td>😕</td> -->
+                        <td class="frustration-level">
+                          {{ form.frustration_level }}
+                        </td>
+                       <!--  <td>👹</td> -->
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    {% csrf_token %}
+                    {{ form.struggle_in_progess.as_hidden }}
+                    <input id="submit" type="submit" value="Submit">
+                  </td>
+                </tr>
+              </table>
+            </form>
           </div>
-          <div class="completed-struggles-link">
-            <a href="{% url 'struggle-list' %}">🔥 Completed struggles 💥</a> 
-          </div>
-        </div>
-      </td>
+        </td>
+      </div>
     </tr>
   </table>
+
 </body>
 </html>

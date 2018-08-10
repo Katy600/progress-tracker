@@ -16,6 +16,8 @@ class StruggleModelForm(ModelForm):
   	widget=NumberInput(attrs={'type':'range',  'step': '1', 'max':'10', 'min':'0', 'value': '5'}))
   struggle = forms.CharField(
   	widget=forms.Textarea(attrs={'placeholder': 'Enter your struggle here...'}))
+  plan = forms.CharField(
+    widget=forms.Textarea(attrs={'placeholder': 'Enter your plan here...'}))
 
   class Meta:
     model = StruggleData
